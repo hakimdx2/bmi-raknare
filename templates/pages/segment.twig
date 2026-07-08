@@ -1,0 +1,657 @@
+{% extends "base.twig" %}
+
+{% set current_month = "now"|date("F") %}
+{% set current_year = "now"|date("Y") %}
+{% set swedish_months = {
+    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
+    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
+    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
+} %}
+{% set month_sv = swedish_months[current_month] %}
+
+{% set segment_data = {
+    'kvinna': {
+        'color': 'pink',
+        'title': 'BMI Räknare Kvinna & Ålder: Kalkylator & Tabell (' ~ month_sv ~ ' ' ~ current_year ~ ')',
+        'description': 'Räkna ut BMI för kvinna baserat på din ålder. Vår kalkylator och tabell visar normalvärden för kvinnor 40, 50, 60 och 70+ år. 100% Gratis.',
+        'h1': 'BMI Räknare Kvinna: Räkna ut BMI efter ålder',
+        'intro': 'Kvinnor har naturligt en något högre fettprocent än män. Vår kalkylator tar hänsyn till din ålder för att ge dig ett korrekt BMI-värde.',
+        'plural': 'kvinnor'
+    },
+    'man': {
+        'color': 'blue',
+        'title': 'BMI Räknare Man & Ålder: Kalkylator & Tabell (' ~ month_sv ~ ' ' ~ current_year ~ ')',
+        'description': 'Räkna ut BMI för män baserat på ålder och muskelmassa. Få en exakt uträkning och jämför med vår BMI-tabell för män. 100% Gratis.',
+        'h1': 'BMI Räknare Man: Räkna ut BMI efter ålder',
+        'intro': 'Män har ofta mer muskelmassa vilket kan påverka BMI. Vår kalkylator ger dig en korrekt uträkning och tolkning anpassad för män.',
+        'plural': 'män'
+    },
+    'barn': {
+        'color': 'emerald',
+        'title': 'BMI Barn – ISO-BMI Kalkylator & Räknare (' ~ month_sv ~ ' ' ~ current_year ~ ')',
+        'description': 'Beräkna BMI för barn och ungdomar med vår ISO-BMI kalkylator. Vi följer BVC:s tillväxtkurvor. Uppdaterad ' ~ month_sv ~ ' ' ~ current_year ~ '.',
+        'h1': 'BMI Räknare Barn – ISO-BMI Kalkylator',
+        'intro': 'För barn används ISO-BMI som tar hänsyn till att barn växer olika beroende på ålder och kön. Detta är standarden som används av barnhälsovården i Sverige.',
+        'plural': 'barn'
+    }
+} %}
+
+{% set data = segment_data[segment] %}
+
+{% block title %}
+	{{ data.title }}
+{% endblock %}
+{% block description %}
+	{{ data.description }}
+{% endblock %}
+{% block canonical %}
+	{{ base_url }}/bmi-{{ segment }}/
+{% endblock %}
+
+{% block schema %}
+	<script type="application/ld+json">
+		{
+					"@context": "https://schema.org",
+					"@type": "MedicalWebPage",
+					"name": "{{ data.title }}",
+					"description": "{{ data.description }}",
+					"url": "{{ base_url }}/bmi-{{ segment }}/",
+					"dateModified": "{{ "now"|date("Y-m-d") }}",
+					"inLanguage": "sv-SE",
+					"isPartOf": {
+						"@type": "WebSite",
+						"name": "BMI-Räknare.se",
+						"url": "{{ base_url }}/"
+					},
+					"about": {
+						"@type": "MedicalCondition",
+						"name": "Body Mass Index (BMI)"
+					},
+					"audience": {
+						"@type": "MedicalAudience",
+						"audienceType": "Patienter"
+					},
+					"medicalAudience": {
+						"@type": "MedicalAudience",
+						"audienceType": "{{ data.plural|capitalize }}"
+					}
+				}
+	</script>
+	<script type="application/ld+json">
+		{
+																		    "@context": "https://schema.org",
+																		    "@type": "BreadcrumbList",
+																		    "itemListElement": [
+																		        {
+																		            "@type": "ListItem",
+																		            "position": 1,
+																		            "name": "Hem",
+																		            "item": "{{ base_url }}/"
+																		        },
+																		        {
+																		            "@type": "ListItem",
+																		            "position": 2,
+																		            "name": "BMI
+		{{ segment|capitalize }}",
+																		            "item": "{{ base_url }}/bmi-{{ segment }}/"
+																		        }
+																		    ]
+																		}
+	</script>
+	<script type="application/ld+json">
+		{
+																		    "@context": "https://schema.org",
+																		    "@type": "WebApplication",
+																		    "name": "BMI Räknare för
+		{{ segment|capitalize }}",
+																		    "url": "{{ base_url }}/bmi-{{ segment }}/",
+																		    "description": "{{ data.description }}",
+																		    "applicationCategory": "HealthApplication",
+																		    "operatingSystem": "All",
+																		    "offers": {
+																		        "@type": "Offer",
+																		        "price": "0",
+																		        "priceCurrency": "SEK"
+																		    }
+																		}
+	</script>
+	{% if segment == 'kvinna' %}
+		<script type="application/ld+json">
+			{
+																					"@context": "https://schema.org",
+																					"@type": "FAQPage",
+																					"mainEntity": [
+																						{
+																							"@type": "Question",
+																							"name": "Vad är normalt BMI för kvinnor?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Enligt WHO är ett normalt BMI för kvinnor mellan 18,5 och 24,9. För kvinnor över 65 år rekommenderas dock ett något högre BMI (22-27) eftersom ett visst överskott ger skydd vid sjukdom."
+																							}
+																						},
+																						{
+																							"@type": "Question",
+																							"name": "Hur mycket ska en kvinna på 170 cm väga?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "En kvinna som är 170 cm lång bör väga mellan 53 och 72 kg för att ha ett normalt BMI (18,5-24,9). Idealvikten beror på ålder, muskelmassa och kroppsbyggnad."
+																							}
+																						},
+																						{
+																							"@type": "Question",
+																							"name": "Vilket BMI krävs för att få Ozempic?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Ozempic är endast godkänt för typ 2-diabetes i Sverige. För viktmedicin som Wegovy krävs BMI 30 eller högre, alternativt BMI 27 med viktrelaterad komplikation."
+																							}
+																						},
+																						{
+																							"@type": "Question",
+																							"name": "Varför ska äldre kvinnor ha högre BMI?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Äldre kvinnor (över 65 år) rekommenderas ett högre BMI (22-27) eftersom kroppen behöver energireserver vid sjukdom. Studier visar att äldre med måttlig övervikt ofta lever längre."
+																							}
+																						}
+																					]
+																				}
+		</script>
+	{% elseif segment == 'man' %}
+		<script type="application/ld+json">
+			{
+																					"@context": "https://schema.org",
+																					"@type": "FAQPage",
+																					"mainEntity": [
+																						{
+																							"@type": "Question",
+																							"name": "Vad är normalt BMI för män?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Ett normalt BMI för vuxna män ligger mellan 18,5 och 24,9 enligt WHO. Män med mycket muskelmassa kan dock ha högre BMI utan att vara överviktiga."
+																							}
+																						},
+																						{
+																							"@type": "Question",
+																							"name": "Hur skiljer man muskel-BMI från fett-BMI?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Midjemått är nyckeln. En man med BMI 28 men midja under 94 cm har troligen hög muskelmassa. Vid midjemått över 102 cm är övervikt nästan alltid fettmassa."
+																							}
+																						}
+																					]
+																				}
+		</script>
+	{% else %}
+		<script type="application/ld+json">
+			{
+																					"@context": "https://schema.org",
+																					"@type": "FAQPage",
+																					"mainEntity": [
+																						{
+																							"@type": "Question",
+																							"name": "Vad är ISO-BMI för barn?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "ISO-BMI är ett ålders- och könsanpassat BMI för barn där gränsvärdena justeras efter barnets ålder. Det utvecklades av International Obesity Task Force (IOTF)."
+																							}
+																						},
+																						{
+																							"@type": "Question",
+																							"name": "Hur vet jag om mitt barn har övervikt?",
+																							"acceptedAnswer": {
+																								"@type": "Answer",
+																								"text": "Använd vår ISO-BMI kalkylator som jämför ditt barns BMI med andra barn i samma ålder. iso-BMI 25 motsvarar övervikt och iso-BMI 30 motsvarar obesitas."
+																							}
+																						}
+																					]
+																				}
+		</script>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+	<div
+		class="bg-gray-50 min-h-screen">
+
+		<!-- Header / Breadcrumb -->
+		<div class="bg-gradient-to-r from-{{ data.color }}-50 to-{{ data.color }}-100 border-b border-{{ data.color }}-200">
+			<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+				<nav class="flex text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+					<a href="/" class="hover:text-brand-600">Hem</a>
+					<span class="mx-2">/</span>
+					<span class="font-medium text-gray-900">{{ segment|capitalize }}</span>
+				</nav>
+				<div class="flex items-center space-x-3">
+					<span class="w-3 h-3 rounded-full bg-{{ data.color }}-500"></span>
+					<h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+						{{ data.h1 }}
+					</h1>
+				</div>
+				<p class="mt-3 text-lg text-gray-600 max-w-3xl">
+					{{ data.intro }}
+				</p>
+			</div>
+		</div>
+
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div
+				class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+				<!-- Main Content: Calculator & Article -->
+				<div
+					class="lg:col-span-2">
+					<!-- Calculator Card -->
+					<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-12">
+						<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+							<h2 class="text-xl font-bold text-gray-900">Beräkna ditt BMI här</h2>
+							<!-- Trust badge inline -->
+							<div class="flex items-center mt-2 sm:mt-0 text-xs text-gray-500">
+								<svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+								</svg>
+								Medicinskt granskad
+							</div>
+						</div>
+						{% include 'components/calculator.twig' %}
+
+						{% include 'components/medical-review.twig' %}
+					</div>
+
+					<!-- Monetization CTA -->
+					{% include 'components/cta-box.twig' %}
+
+					<!-- Content Area -->
+					<div class="prose prose-brand prose-lg text-gray-600 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+						<h2>Vad är normalt BMI för
+							{{ data.plural }}?</h2>
+						<p>
+							Att förstå sitt BMI är viktigt för att få en snabb indikation på sin viktstatus.
+							{{ data.intro }}
+						</p>
+
+						<p>
+							Enligt Världshälsoorganisationen (WHO) och svenska 1177 Vårdguiden anses ett BMI mellan
+							<strong>18.5 och 25</strong>
+							vara normalvikt för vuxna. För äldre personer (65+) rekommenderas 
+																																																															                        ofta ett något högre intervall på 22-29.
+						</p>
+
+						<h3>BMI-tabell för
+							{{ data.plural }}</h3>
+						<div class="not-prose mt-4 mb-6">
+							<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+								{% if segment == 'barn' %}
+									<!-- ISO-BMI Table for Children -->
+									<table class="min-w-full divide-y divide-gray-300">
+										<thead class="bg-emerald-50">
+											<tr>
+												<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Ålder</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Övervikt (Pojke/Flicka)</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fetma (Pojke/Flicka)</th>
+											</tr>
+										</thead>
+										<tbody class="divide-y divide-gray-200 bg-white">
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">2 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">18.4 / 18.0</td>
+												<td class="px-3 py-4 text-sm text-gray-500">20.1 / 19.8</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">6 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">17.6 / 17.3</td>
+												<td class="px-3 py-4 text-sm text-gray-500">19.8 / 19.7</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">10 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">19.8 / 19.9</td>
+												<td class="px-3 py-4 text-sm text-gray-500">24.0 / 24.1</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">14 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">22.6 / 23.3</td>
+												<td class="px-3 py-4 text-sm text-gray-500">27.6 / 28.6</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">18 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">25.0 / 25.0</td>
+												<td class="px-3 py-4 text-sm text-gray-500">30.0 / 30.0</td>
+											</tr>
+										</tbody>
+									</table>
+									<p class="text-xs text-gray-500 p-2 bg-gray-50">* Gränsvärden enligt ISO-BMI (IOTF-25/30).</p>
+
+								{% elseif segment == 'kvinna' %}
+									<!-- Age-adjusted Table for Women -->
+									<table class="min-w-full divide-y divide-gray-300">
+										<thead class="bg-pink-50">
+											<tr>
+												<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Åldersgrupp</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Normalt BMI-intervall</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Kommentar</th>
+											</tr>
+										</thead>
+										<tbody class="divide-y divide-gray-200 bg-white">
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">19–24 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">19 – 24</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Standard WHO</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">25–34 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">20 – 25</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Liten ökning normalt</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">35–44 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">21 – 26</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Metabolismen saktar ner</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">45–54 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">22 – 27</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Klimakteriet påverkar</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">55–64 år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">23 – 28</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Naturlig fettökning</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">65+ år</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-700">24 – 29</td>
+												<td class="px-3 py-4 text-sm text-gray-500">Extra reserver bra</td>
+											</tr>
+										</tbody>
+									</table>
+									<p class="text-xs text-gray-500 p-2 bg-gray-50">* NRC (National Research Council) riktlinjer.</p>
+
+								{% else %}
+									<!-- Standard WHO Table -->
+									<table class="min-w-full divide-y divide-gray-300">
+										<thead class="bg-{{ data.color }}-50">
+											<tr>
+												<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Klassificering</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BMI-intervall</th>
+												<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Betydelse</th>
+											</tr>
+										</thead>
+										<tbody class="divide-y divide-gray-200 bg-white">
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Undervikt</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">&lt; 18.5</td>
+												<td class="px-3 py-4 text-sm text-blue-600">Kan tyda på undernäring</td>
+											</tr>
+											<tr class="bg-green-50">
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-green-800">Normalvikt</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-green-700 font-semibold">18.5 – 25.0</td>
+												<td class="px-3 py-4 text-sm text-green-700">Hälsosamt viktintervall</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Övervikt</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">25.0 – 30.0</td>
+												<td class="px-3 py-4 text-sm text-orange-600">Ökad risk för hälsoproblem</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Fetma klass I</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">30.0 – 35.0</td>
+												<td class="px-3 py-4 text-sm text-red-600">Hög risk för hälsoproblem</td>
+											</tr>
+											<tr>
+												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Fetma klass II+</td>
+												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">&gt; 35.0</td>
+												<td class="px-3 py-4 text-sm text-red-700">Mycket hög risk</td>
+											</tr>
+										</tbody>
+									</table>
+								{% endif %}
+							</div>
+						</div>
+
+						<h3>Ålderns betydelse för
+							{{ data.plural }}</h3>
+						<p>
+							Ju äldre man blir, desto mer förändras kroppens sammansättning. Muskelmassa minskar naturligt 
+																																																															                        med åldern medan fettandelen ökar, även om vikten är oförändrad. Det är därför som äldre 
+																																																															                        personer (65+) ofta rekommenderas ett något högre BMI.
+						</p>
+
+						{% if segment == 'kvinna' %}
+							<h3>Speciella överväganden för kvinnor</h3>
+							<p>
+								Kvinnor genomgår hormonella förändringar genom livet som kan påverka vikten – menstruationscykel, 
+																																																																								                        graviditet och klimakteriet har alla inverkan. Under graviditeten bör du
+								<strong>inte</strong>
+								använda vanliga BMI-gränsvärden. Läs mer på vår
+								<a href="/bmi-gravid/">sida för gravida</a>.
+							</p>
+
+							<h3>WHO:s rekommendationer för kvinnor</h3>
+							<p>
+								Enligt Världshälsoorganisationen (WHO) bör vuxna kvinnor sträva efter ett BMI mellan 18.5 och 24.9 
+																																																																								                        för optimal hälsa. Ett BMI under 18.5 kan öka risken för näringsbrist, benskörhet och 
+																																																																								                        menstruationsstörningar. Ett BMI över 25 ökar risken för hjärt-kärlsjukdomar, typ 2-diabetes 
+																																																																								                        och vissa cancerformer.
+							</p>
+
+							<h3>Midjemått för kvinnor</h3>
+							<p>
+								Förutom BMI rekommenderar 1177 Vårdguiden att kvinnor mäter sitt midjemått. Ett midjemått 
+																																																																								                        över
+								<strong>80 cm</strong>
+								indikerar ökad hälsorisk, och över
+								<strong>88 cm</strong>
+								innebär kraftigt ökad risk för metabola sjukdomar. Du kan mäta ditt midjemått i vår kalkylator ovan.
+							</p>
+
+							<h3>Tips för att nå en hälsosam vikt</h3>
+							<ul>
+								<li>Ät en balanserad kost rik på grönsaker, frukt och fullkorn</li>
+								<li>Rör på dig minst 150 minuter per vecka enligt Folkhälsomyndigheten</li>
+								<li>Sov 7-9 timmar per natt för optimal hormonbalans</li>
+								<li>Hantera stress som kan leda till viktuppgång</li>
+							</ul>
+						{% elseif segment == 'man' %}
+							<h3>Speciella överväganden för män</h3>
+							<p>
+								Män som styrketränar regelbundet kan ha ett "överviktigt" BMI trots låg fettprocent. 
+																																																																								                        BMI skiljer inte på fett och muskler, så för aktiva män rekommenderar vi att även mäta 
+																																																																								                        midjemåttet. Ett midjemått under 94 cm anses hälsosamt för män.
+							</p>
+
+							<h3>WHO:s rekommendationer för män</h3>
+							<p>
+								Enligt Världshälsoorganisationen (WHO) bör vuxna män sträva efter ett BMI mellan 18.5 och 24.9 
+																																																																								                        för optimal hälsa. Män med BMI över 25 har ökad risk för hjärt-kärlsjukdomar, högt blodtryck, 
+																																																																								                        typ 2-diabetes och sömnapné. Ett BMI under 18.5 kan indikera undernäring eller underliggande 
+																																																																								                        hälsoproblem.
+							</p>
+
+							<h3>Midjemått för män</h3>
+							<p>
+								1177 Vårdguiden och WHO rekommenderar att män kompletterar BMI-mätningen med midjemått. 
+																																																																								                        Ett midjemått över
+								<strong>94 cm</strong>
+								indikerar ökad hälsorisk, och över
+								<strong>102 cm</strong>
+								innebär betydligt förhöjd risk för metabola sjukdomar, hjärtsjukdom och diabetes. 
+																																																																								                        Använd vår kalkylator ovan för att mäta ditt midjemått.
+							</p>
+
+							<h3>Muskelmassa och BMI</h3>
+							<p>
+								Män har generellt högre andel muskelmassa än kvinnor, vilket kan ge ett missvisande högt BMI. 
+																																																																								                        Om du tränar regelbundet med vikter kan ditt BMI klassificeras som "övervikt" trots att din 
+																																																																								                        fettprocent är låg. I dessa fall är midjemått och eventuell kroppsfettmätning mer tillförlitliga.
+							</p>
+
+							<h3>Tips för att nå en hälsosam vikt</h3>
+							<ul>
+								<li>Kombinera styrketräning med konditionsträning för bästa resultat</li>
+								<li>Ät proteinrik kost för att bevara muskelmassa vid viktnedgång</li>
+								<li>Begränsa alkoholintag som bidrar till bukfetma</li>
+								<li>Sov minst 7 timmar – sömnbrist påverkar testosteron och metabolism</li>
+							</ul>
+						{% else %}
+							<h3>Speciella överväganden för barn</h3>
+							<p>
+								Barn växer och utvecklas i olika takt, därför finns inga fasta BMI-gränser som för vuxna. 
+																																																																								                        Istället används så kallade percentiler som jämför barnet med andra i samma ålder och kön. 
+																																																																								                        Vår kalkylator använder ISO-BMI för att ge korrekta resultat.
+							</p>
+
+							<h3>Vad är ISO-BMI?</h3>
+							<p>
+								ISO-BMI är ett internationellt system utvecklat av International Obesity Task Force (IOTF). 
+																																																																								                        Det översätter barns BMI till vuxenvärden, vilket gör det enklare att förstå om ett barn 
+																																																																								                        har undervikt, normalvikt eller övervikt jämfört med vuxna standarder.
+							</p>
+
+							<h3>Percentiler och tillväxtkurvor</h3>
+							<p>
+								Barnhälsovården i Sverige använder tillväxtkurvor där barnets BMI jämförs med andra barn 
+																																																																								                        i samma ålder. En percentil på 50 betyder att hälften av alla barn väger mer och hälften 
+																																																																								                        väger mindre. BVC (Barnavårdscentralen) följer ditt barns utveckling regelbundet.
+							</p>
+
+							<h3>Tips för barns hälsosamma vikt</h3>
+							<ul>
+								<li>Uppmuntra daglig fysisk aktivitet – minst 60 minuter för barn</li>
+								<li>Begränsa skärmtid och stillasittande</li>
+								<li>Erbjud varierad kost med mycket frukt och grönsaker</li>
+								<li>Undvik sockersötade drycker och godis i vardagen</li>
+								<li>Var en förebild genom att själv ha hälsosamma vanor</li>
+							</ul>
+						{% endif %}
+
+						{# Premium SEO Content Components #}
+						{% if segment == 'kvinna' %}
+							{% include 'components/content-kvinna.twig' %}
+						{% elseif segment == 'man' %}
+							{% include 'components/content-man.twig' %}
+						{% else %}
+							{% include 'components/content-barn.twig' %}
+						{% endif %}
+
+						{# FAQ Components #}
+						{% if segment == 'kvinna' %}
+							{% include 'components/faq-kvinna.twig' %}
+						{% endif %}
+
+						<h3>Begränsningar med BMI</h3>
+						<p>
+							BMI är ett enkelt screeningverktyg men har sina begränsningar. Det tar inte hänsyn till:
+						</p>
+						<ul>
+							<li>Muskelmassa vs fettmassa</li>
+							<li>Var på kroppen fettet sitter</li>
+							<li>Benbyggnad och kroppsstorlek</li>
+							<li>Etniska skillnader</li>
+						</ul>
+						<p>
+							Därför erbjuder vår kalkylator även möjlighet att ange midjemått för en mer komplett bild 
+																																																															                        av din hälsa. Du kan också se vår
+							<a href="/bmi-tabell/">kompletta BMI-tabell</a>
+							eller
+							<a href="/idealvikt/">räkna ut din idealvikt</a>.
+						</p>
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				<div
+					class="lg:col-span-1 space-y-8">
+					<!-- BMI Räknare Links -->
+					<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+						<h3 class="text-lg font-bold text-gray-900 mb-4">BMI Räknare</h3>
+						<ul class="space-y-3">
+							<li class="flex items-center">
+								<span class="w-2 h-2 rounded-full bg-pink-500 mr-3"></span>
+								<a href="/bmi-kvinna/" class="text-gray-700 hover:text-pink-600 transition-colors {% if segment == 'kvinna' %}font-bold text-pink-600{% endif %}">BMI Kvinna</a>
+							</li>
+							<li class="flex items-center">
+								<span class="w-2 h-2 rounded-full bg-blue-500 mr-3"></span>
+								<a href="/bmi-man/" class="text-gray-700 hover:text-blue-600 transition-colors {% if segment == 'man' %}font-bold text-blue-600{% endif %}">BMI Man</a>
+							</li>
+							<li class="flex items-center">
+								<span class="w-2 h-2 rounded-full bg-emerald-500 mr-3"></span>
+								<a href="/bmi-barn/" class="text-gray-700 hover:text-emerald-600 transition-colors {% if segment == 'barn' %}font-bold text-emerald-600{% endif %}">BMI Barn (ISO-BMI)</a>
+							</li>
+							<li class="flex items-center">
+								<span class="w-2 h-2 rounded-full bg-amber-500 mr-3"></span>
+								<a href="/bmi-aldre/" class="text-gray-700 hover:text-amber-600 transition-colors">BMI Äldre (65+)</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Tools Widget -->
+					<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+						<h3 class="text-lg font-bold text-gray-900 mb-4">Verktyg</h3>
+						<ul class="space-y-3">
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-gray-400 mr-2" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+								</svg>
+								<a href="/idealvikt/" class="text-gray-700 hover:text-brand-600 transition-colors">Idealvikt Räknare</a>
+							</li>
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-gray-400 mr-2" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+								</svg>
+								<a href="/bmi-tabell/" class="text-gray-700 hover:text-brand-600 transition-colors">BMI Tabell</a>
+							</li>
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-gray-400 mr-2" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+								</svg>
+								<a href="/bmi-formel/" class="text-gray-700 hover:text-brand-600 transition-colors">BMI Formel</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- CTA Widget -->
+					<div class="bg-gradient-to-br from-brand-500 to-brand-600 rounded-xl shadow-lg p-6 text-white">
+						<h3 class="text-lg font-bold mb-2">Ozempic & Wegovy</h3>
+						<p class="text-sm text-brand-100 mb-4">Vill du veta om du uppfyller kraven för medicinsk viktbehandling?</p>
+						<a href="/bmi-ozempic-krav/" class="inline-flex items-center px-4 py-2 bg-white text-brand-600 rounded-lg font-semibold text-sm hover:bg-brand-50 transition-colors">
+							Kolla dina krav
+							<svg class="ml-2 w-4 h-4" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+							</svg>
+						</a>
+					</div>
+
+					<!-- Trust Signals -->
+					<div class="bg-gray-50 rounded-xl border border-gray-200 p-6">
+						<div class="flex items-center mb-3">
+							<svg class="w-5 h-5 text-green-500 mr-2" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+							</svg>
+							<span class="font-semibold text-gray-900">Säker & Pålitlig</span>
+						</div>
+						<ul class="text-sm text-gray-600 space-y-2">
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewbox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+								</svg>
+								Baserat på WHO-gränsvärden
+							</li>
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewbox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+								</svg>
+								Medicinskt granskad
+							</li>
+							<li class="flex items-center">
+								<svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewbox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+								</svg>
+								100% gratis, ingen registrering
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

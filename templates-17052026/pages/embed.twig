@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Widget</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: transparent; }
+    </style>
+</head>
+<body class="p-4">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 max-w-lg mx-auto">
+        {% include 'components/calculator.twig' %}
+        <div class="mt-4 text-center border-t border-gray-100 pt-2">
+            <a href="{{ base_url }}" target="_blank" class="text-xs text-gray-400 hover:text-brand-600 font-medium transition-colors">
+                ⚡ Drivs av BMI-Räknare.se
+            </a>
+        </div>
+    </div>
+</body>
+</html>

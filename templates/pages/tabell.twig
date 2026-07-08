@@ -1,0 +1,242 @@
+{% extends "base.twig" %}
+
+{% block title %}BMI Tabell (2026): Gränsvärden för Kvinna, Man & Barn{% endblock %}
+{% block description %}Komplett BMI-tabell med vikt och längd. Se färgkodade gränsvärden för kvinna och man enligt WHO. Snabbt och enkelt sätt att se BMI utan att räkna. Gratis!{% endblock %}
+{% block canonical %}{{ base_url }}/bmi-tabell/{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Hem",
+            "item": "{{ base_url }}/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "BMI Tabell",
+            "item": "{{ base_url }}/bmi-tabell/"
+        }
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BMI Tabell",
+    "url": "{{ base_url }}/bmi-tabell/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "SEK"
+    },
+    "description": "Interaktiv BMI-tabell som visar BMI baserat på vikt och längd med färgkodning enligt WHO-gränsvärden."
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Hur läser man en BMI-tabell?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Hitta din längd i den vänstra kolumnen och följ raden till höger tills du hittar din vikt. Siffran i rutan är ditt BMI och färgen visar vilken kategori du ligger i."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Vad är ett normalt BMI enligt tabellen?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ett normalt BMI för vuxna ligger mellan 18.5 och 25 enligt WHO. Detta visas med grön färg i tabellen. För äldre personer (65+) är intervallet 22-29."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Stämmer alltid BMI-tabellen?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "BMI-tabellen ger en snabb uppskattning men tar inte hänsyn till muskelmassa, ålder eller kön. En vältränad person kan ha högt BMI utan att vara överviktig."
+            }
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen">
+    
+    <!-- Header -->
+    <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <nav class="flex text-sm text-gray-500 mb-4">
+                <a href="/" class="hover:text-brand-600">Hem</a>
+                <span class="mx-2">/</span>
+                <span class="font-medium text-gray-900">BMI Tabell</span>
+            </nav>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl lg:text-4xl">
+                    Komplett BMI Tabell: Kvinna, Man & Barn
+                </h1>
+                <!-- Trust badge inline -->
+                <div class="flex items-center mt-2 sm:mt-0 text-xs text-gray-500">
+                    <svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    Baserad på WHO-gränsvärden
+                </div>
+            </div>
+            <p class="mt-2 text-lg text-gray-500">
+                Hitta ditt BMI direkt i tabellen nedan. Färgerna visar om du ligger i undervikt, normalvikt, övervikt eller fetma.
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- Color Legend -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">Så läser du tabellen</h2>
+            <div class="flex flex-wrap gap-4">
+                <div class="flex items-center">
+                    <span class="w-6 h-6 rounded bg-blue-200 mr-2"></span>
+                    <span class="text-sm text-gray-700">Undervikt (&lt; 18.5)</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-6 h-6 rounded bg-green-200 mr-2"></span>
+                    <span class="text-sm text-gray-700">Normalvikt (18.5 - 25)</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-6 h-6 rounded bg-yellow-200 mr-2"></span>
+                    <span class="text-sm text-gray-700">Övervikt (25 - 30)</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-6 h-6 rounded bg-orange-200 mr-2"></span>
+                    <span class="text-sm text-gray-700">Fetma klass I (30 - 35)</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="w-6 h-6 rounded bg-red-200 mr-2"></span>
+                    <span class="text-sm text-gray-700">Fetma klass II+ (&gt; 35)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMI Table -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm" x-data="bmiTable()">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="sticky left-0 bg-gray-100 px-3 py-3 text-left font-semibold text-gray-900 z-10">Längd (cm)</th>
+                            <template x-for="weight in weights" :key="weight">
+                                <th class="px-3 py-3 text-center font-semibold text-gray-700" x-text="weight + ' kg'"></th>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <template x-for="height in heights" :key="height">
+                            <tr>
+                                <td class="sticky left-0 bg-gray-50 px-3 py-2 font-medium text-gray-900 z-10" x-text="height"></td>
+                                <template x-for="weight in weights" :key="weight">
+                                    <td class="px-3 py-2 text-center font-medium" 
+                                        :class="getBmiClass(height, weight)"
+                                        x-text="calculateBmi(height, weight)"></td>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2">
+                <div class="prose prose-brand prose-lg text-gray-600 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                    <h2>Hur använder jag BMI-tabellen?</h2>
+                    <ol>
+                        <li>Hitta din längd i den vänstra kolumnen</li>
+                        <li>Följ raden till höger tills du hittar din vikt</li>
+                        <li>Siffran i rutan är ditt BMI</li>
+                        <li>Färgen visar vilken kategori du ligger i</li>
+                    </ol>
+
+                    <h3>Vad är ett hälsosamt BMI?</h3>
+                    <p>
+                        Enligt WHO och 1177 Vårdguiden anses ett BMI mellan <strong>18.5 och 25</strong> vara hälsosamt för vuxna. 
+                        För äldre personer (65+) är det rekommenderade intervallet något högre: <strong>22-29</strong>.
+                    </p>
+
+                    <h3>BMI-tabellens begränsningar</h3>
+                    <p>
+                        BMI skiljer inte på muskler och fett. En vältränad person kan ha ett "överviktigt" BMI trots att de är hälsosamma. 
+                        Därför kan det vara värdefullt att komplettera med <strong>midjemått</strong> – något vår 
+                        <a href="/">BMI-räknare</a> stödjer.
+                    </p>
+
+                    <h3>Varför är BMI-tabell användbar?</h3>
+                    <p>
+                        En BMI-tabell ger dig en snabb överblick utan att behöva räkna. Det är praktiskt för vårdpersonal, 
+                        dietister och privatpersoner som vill ha en ungefärlig uppskattning. Tabellen är baserad på samma 
+                        formel som vår BMI-räknare: <strong>vikt (kg) / längd (m)²</strong>.
+                    </p>
+
+                    <h3>BMI-tabell för olika grupper</h3>
+                    <p>
+                        Standardtabellen gäller för vuxna mellan 18 och 65 år. För andra grupper finns anpassade gränsvärden:
+                    </p>
+                    <ul>
+                        <li><a href="/bmi-barn/">Barn</a> – använder ISO-BMI och percentiler</li>
+                        <li><a href="/bmi-aldre/">Äldre 65+</a> – högre rekommenderade gränsvärden</li>
+                        <li><a href="/bmi-gravid/">Gravida</a> – utgår från BMI före graviditeten</li>
+                    </ul>
+
+                    <div class="mt-6">
+                        <a href="/" class="inline-flex items-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700">
+                            Räkna ut ditt exakta BMI
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            {% include 'components/sidebar.twig' %}
+        </div>
+    </div>
+</div>
+
+<script>
+function bmiTable() {
+    return {
+        heights: [150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200],
+        weights: [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120],
+        
+        calculateBmi(height, weight) {
+            const h = height / 100;
+            return (weight / (h * h)).toFixed(1);
+        },
+        
+        getBmiClass(height, weight) {
+            const bmi = parseFloat(this.calculateBmi(height, weight));
+            if (bmi < 18.5) return 'bg-blue-100 text-blue-800';
+            if (bmi < 25) return 'bg-green-100 text-green-800';
+            if (bmi < 30) return 'bg-yellow-100 text-yellow-800';
+            if (bmi < 35) return 'bg-orange-100 text-orange-800';
+            return 'bg-red-100 text-red-800';
+        }
+    }
+}
+</script>
+{% endblock %}

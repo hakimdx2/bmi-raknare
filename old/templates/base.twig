@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BMI Räknare – Beräkna BMI Gratis | Kalkylator & Tabell{% endblock %}</title>
+    <meta name="description" content="{% block description %}Beräkna ditt BMI gratis och direkt med vår exakta kalkylator för kvinnor, män och barn. Vi tar hänsyn till ålder och visar din idealvikt. Testa nu!{% endblock %}">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="{% block canonical %}{{ base_url }}/{% endblock %}">
+    
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BMI-Räknare.se">
+    <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ block('description') }}{% endblock %}">
+    <meta property="og:url" content="{{ block('canonical') }}">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:image" content="{% block og_image %}{{ base_url }}/assets/images/og-image.jpg{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="BMI Räknare - Beräkna ditt BMI gratis">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ block('og_title') }}">
+    <meta name="twitter:description" content="{{ block('og_description') }}">
+    <meta name="twitter:image" content="{{ block('og_image') }}">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    {% block schema %}{% endblock %}
+</head>
+<body class="antialiased font-sans">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Hoppa till innehåll</a>
+    
+    <header class="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100 sticky top-0 z-50" x-data="{ mobileOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <div class="w-9 h-9 bg-gradient-to-br from-brand-500 to-brand-700 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900 hidden sm:block">BMI-Räknare<span class="text-brand-600">.se</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-1">
+                    <a href="/" class="px-3 py-2 text-sm font-medium text-gray-900 hover:text-brand-600 transition-colors">Hem</a>
+                    
+                    <!-- Dropdown for Segments -->
+                    <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="px-3 py-4 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors flex items-center">
+                            BMI Räknare
+                            <svg class="ml-1 w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div x-show="open" 
+                             x-transition:enter="transition ease-out duration-150" 
+                             x-transition:enter-start="opacity-0 -translate-y-1" 
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-100"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                             class="absolute left-0 top-full w-52 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50" 
+                             style="display: none;">
+                            <a href="/bmi-kvinna/" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-pink-50 hover:text-pink-700 transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-pink-500 mr-3"></span>
+                                BMI Kvinna
+                            </a>
+                            <a href="/bmi-man/" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-blue-500 mr-3"></span>
+                                BMI Man
+                            </a>
+                            <a href="/bmi-barn/" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 mr-3"></span>
+                                BMI Barn
+                            </a>
+                            <a href="/bmi-aldre/" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-amber-50 hover:text-amber-700 transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-amber-500 mr-3"></span>
+                                BMI Äldre 65+
+                            </a>
+                            <a href="/bmi-gravid/" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-rose-50 hover:text-rose-700 transition-colors">
+                                <span class="w-2 h-2 rounded-full bg-rose-500 mr-3"></span>
+                                BMI Gravid
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="/bmi-formel/" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Formel</a>
+                    <a href="/bmi-tabell/" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Tabell</a>
+                    <a href="/idealvikt/" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Idealvikt</a>
+                    <a href="/kalorier/" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Kalorier</a>
+                    <a href="/bmi-ozempic-krav/" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Ozempic</a>
+                    
+                    <!-- CTA Button -->
+                    <a href="/widget/" class="ml-4 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 shadow-sm hover:shadow transition-all">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        Widget
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button @click="mobileOpen = !mobileOpen" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+                        <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg x-show="mobileOpen" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileOpen" x-transition class="md:hidden border-t border-gray-100 bg-white" style="display: none;">
+            <div class="px-4 py-3 space-y-1">
+                <a href="/" class="block px-3 py-2 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50">Hem</a>
+                <a href="/bmi-kvinna/" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-pink-50 hover:text-pink-700">
+                    <span class="w-2 h-2 rounded-full bg-pink-500 mr-3"></span>
+                    BMI Kvinna
+                </a>
+                <a href="/bmi-man/" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-blue-50 hover:text-blue-700">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 mr-3"></span>
+                    BMI Man
+                </a>
+                <a href="/bmi-barn/" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-emerald-50 hover:text-emerald-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 mr-3"></span>
+                    BMI Barn
+                </a>
+                <a href="/bmi-aldre/" class="flex items-center px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-amber-50 hover:text-amber-700">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 mr-3"></span>
+                    BMI Äldre 65+
+                </a>
+                <a href="/bmi-formel/" class="block px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-gray-50">BMI Formel</a>
+                <a href="/bmi-ozempic-krav/" class="block px-3 py-2 text-base font-medium text-gray-600 rounded-md hover:bg-gray-50">Ozempic</a>
+                <a href="/widget/" class="block px-3 py-2 text-base font-medium text-brand-600 rounded-md hover:bg-brand-50">Widget</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-16">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-brand-400 to-brand-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold">BMI-Räknare<span class="text-brand-400">.se</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Sveriges mest kompletta BMI-kalkylator. Gratis och pålitlig sedan 2024.
+                    </p>
+                </div>
+
+                <!-- BMI Räknare -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">BMI Räknare</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/bmi-kvinna/" class="text-gray-400 hover:text-white text-sm">BMI Kvinna</a></li>
+                        <li><a href="/bmi-man/" class="text-gray-400 hover:text-white text-sm">BMI Man</a></li>
+                        <li><a href="/bmi-barn/" class="text-gray-400 hover:text-white text-sm">BMI Barn</a></li>
+                        <li><a href="/bmi-aldre/" class="text-gray-400 hover:text-white text-sm">BMI Äldre 65+</a></li>
+                        <li><a href="/bmi-gravid/" class="text-gray-400 hover:text-white text-sm">BMI Gravid</a></li>
+                    </ul>
+                </div>
+
+                <!-- Verktyg -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Verktyg</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/bmi-tabell/" class="text-gray-400 hover:text-white text-sm">BMI Tabell</a></li>
+                        <li><a href="/idealvikt/" class="text-gray-400 hover:text-white text-sm">Idealvikt</a></li>
+                        <li><a href="/kalorier/" class="text-gray-400 hover:text-white text-sm">Kalorier per dag</a></li>
+                        <li><a href="/bmi-formel/" class="text-gray-400 hover:text-white text-sm">BMI Formel</a></li>
+                        <li><a href="/widget/" class="text-gray-400 hover:text-white text-sm">Widget</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Information</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/bmi-ozempic-krav/" class="text-gray-400 hover:text-white text-sm">Ozempic & Wegovy</a></li>
+                        <li><a href="/bmi-formel/" class="text-gray-400 hover:text-white text-sm">Om BMI</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="mt-12 pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm">
+                        &copy; {{ "now"|date("Y") }} BMI-Räknare.se. Alla rättigheter förbehållna.
+                    </p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <span class="text-gray-500 text-xs">Medicinskt granskad information enligt 1177 & WHO riktlinjer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

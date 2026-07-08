@@ -1,0 +1,272 @@
+{% extends "base.twig" %}
+
+{% set current_month = "now"|date("F") %}
+{% set current_year = "now"|date("Y") %}
+{% set swedish_months = {
+    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
+    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
+    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
+} %}
+{% set month_sv = swedish_months[current_month] %}
+
+{% block title %}BMI Äldre 65+ – Räknare & Tabell ({{ month_sv }}
+	{{ current_year }})
+{% endblock %}
+{% block description %}Räkna ut BMI för äldre (65+). Anpassade gränsvärden för seniorer enligt Socialstyrelsen. Uppdaterad
+	{{ month_sv }}
+	{{ current_year }}.
+{% endblock %}
+{% block canonical %}
+	{{ base_url }}/bmi-aldre/
+{% endblock %}
+
+{% block schema %}
+	<script type="application/ld+json">
+		{
+												    "@context": "https://schema.org",
+												    "@type": "BreadcrumbList",
+												    "itemListElement": [
+												        {
+												            "@type": "ListItem",
+												            "position": 1,
+												            "name": "Hem",
+												            "item": "{{ base_url }}/"
+												        },
+												        {
+												            "@type": "ListItem",
+												            "position": 2,
+												            "name": "BMI Äldre",
+												            "item": "{{ base_url }}/bmi-aldre/"
+												        }
+												    ]
+												}
+	</script>
+	<script type="application/ld+json">
+		{
+												    "@context": "https://schema.org",
+												    "@type": "WebApplication",
+												    "name": "BMI Räknare för Äldre",
+												    "url": "{{ base_url }}/bmi-aldre/",
+												    "applicationCategory": "HealthApplication",
+												    "operatingSystem": "All",
+												    "offers": {
+												        "@type": "Offer",
+												        "price": "0",
+												        "priceCurrency": "SEK"
+												    },
+												    "description": "BMI-kalkylator anpassad för personer över 65 år med justerade gränsvärden (22-29)."
+												}
+	</script>
+	<script type="application/ld+json">
+		{
+												    "@context": "https://schema.org",
+												    "@type": "FAQPage",
+												    "mainEntity": [
+												        {
+												            "@type": "Question",
+												            "name": "Varför har äldre andra BMI-gränsvärden?",
+												            "acceptedAnswer": {
+												                "@type": "Answer",
+												                "text": "Personer över 65 år rekommenderas ett något högre BMI (22-29) eftersom kroppen behöver extra reserver vid sjukdom och studier visar att ett något högre BMI är kopplat till bättre hälsa hos seniorer."
+												            }
+												        },
+												        {
+												            "@type": "Question",
+												            "name": "Vad är normalt BMI för äldre?",
+												            "acceptedAnswer": {
+												                "@type": "Answer",
+												                "text": "För personer över 65 år anses ett BMI mellan 22 och 29 vara optimalt, jämfört med 18.5-25 för yngre vuxna."
+												            }
+												        },
+												        {
+												            "@type": "Question",
+												            "name": "Varför är undervikt farligare för äldre?",
+												            "acceptedAnswer": {
+												                "@type": "Answer",
+												                "text": "Äldre personer med lågt BMI har sämre överlevnad vid akut sjukdom, frakturer och infektioner. Kroppen behöver energireserver för att hantera påfrestningar."
+												            }
+												        }
+												    ]
+												}
+	</script>
+{% endblock %}
+
+{% block content %}
+	<div
+		class="bg-gray-50 min-h-screen">
+
+		<!-- Header / Breadcrumb -->
+		<div class="bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-100">
+			<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+				<nav class="flex text-sm text-gray-500 mb-4">
+					<a href="/" class="hover:text-brand-600">Hem</a>
+					<span class="mx-2">/</span>
+					<span class="font-medium text-gray-900">Äldre 65+</span>
+				</nav>
+				<div class="flex items-center space-x-3">
+					<span class="w-3 h-3 rounded-full bg-amber-500"></span>
+					<h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl lg:text-4xl">
+						BMI för Äldre (65+) – Räkna ut BMI
+					</h1>
+				</div>
+				<p class="mt-2 text-lg text-gray-600">
+					Anpassade gränsvärden enligt aktuella rekommendationer för seniorer.
+				</p>
+			</div>
+		</div>
+
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div
+				class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+				<!-- Main Content: Calculator & Article -->
+				<div
+					class="lg:col-span-2">
+					<!-- Important Notice -->
+					<div class="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-8">
+						<div class="flex items-start">
+							<svg class="h-6 w-6 text-amber-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+							</svg>
+							<div>
+								<h2 class="text-lg font-bold text-amber-900 mb-2">Varför andra gränsvärden för äldre?</h2>
+								<p class="text-amber-800 text-sm">
+									För personer över 65 år rekommenderas ett
+									<strong>högre BMI (22-29)</strong>
+									jämfört med yngre vuxna (18.5-25). 
+																																																						                                Detta beror på att äldre personer behöver extra reserver vid sjukdom och att ett något högre BMI är kopplat till bättre hälsa hos seniorer.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Malnutrition Warning -->
+					<div class="bg-red-50 border border-red-200 rounded-xl p-5 mb-8">
+						<div class="flex items-start">
+							<svg class="h-6 w-6 text-red-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+							</svg>
+							<div>
+								<p class="font-bold text-red-900">⚠️ Varning: BMI under 22 efter 70 år</p>
+								<p class="text-red-800 text-sm mt-1">
+									Enligt
+									<strong>Socialstyrelsen</strong>
+									är ett BMI under 22 hos personer över 70 år 
+																																																					ett tecken på undernäring och kan innebära
+									<strong>ökad dödsrisk</strong>. 
+																																																										Sök vård om du oavsiktligt tappat vikt eller har svårt att äta tillräckligt.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Calculator Card -->
+					<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-12">
+						<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+							<h2 class="text-xl font-bold text-gray-900">Beräkna ditt BMI här</h2>
+							<!-- Trust badge inline -->
+							<div class="flex items-center mt-2 sm:mt-0 text-xs text-gray-500">
+								<svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+								</svg>
+								Medicinskt granskad
+							</div>
+						</div>
+						{% include 'components/calculator.twig' with {'female_color': 'amber', 'male_color': 'orange'} %}
+
+						{% include 'components/medical-review.twig' %}
+					</div>
+
+					<!-- Content Area -->
+					<div class="prose prose-brand prose-lg text-gray-600 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+						<h2>BMI-tabell för äldre (65+)</h2>
+
+						<div class="not-prose my-6">
+							<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+								<table class="min-w-full divide-y divide-gray-300">
+									<thead class="bg-amber-50">
+										<tr>
+											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Klassificering</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">BMI-intervall</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Kommentar</th>
+										</tr>
+									</thead>
+									<tbody class="divide-y divide-gray-200 bg-white">
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Undervikt</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">&lt; 22</td>
+											<td class="px-3 py-4 text-sm text-red-600">Ökad risk vid sjukdom</td>
+										</tr>
+										<tr class="bg-green-50">
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-green-800">Normalvikt</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-green-700 font-semibold">22 – 29</td>
+											<td class="px-3 py-4 text-sm text-green-700">Optimalt för seniorer</td>
+										</tr>
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Övervikt</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">29 – 35</td>
+											<td class="px-3 py-4 text-sm text-orange-600">Ökad belastning på leder</td>
+										</tr>
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Fetma</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">&gt; 35</td>
+											<td class="px-3 py-4 text-sm text-red-600">Rådgör med läkare</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<h3>Varför är undervikt farligare för äldre?</h3>
+						<p>
+							Studier visar att äldre personer med lågt BMI har sämre överlevnad vid akut sjukdom, frakturer och infektioner. 
+																																										                        Kroppen behöver energireserver för att hantera påfrestningar som ofta kommer med åldern.
+						</p>
+
+						<h3>Sarkedopeni och muskelmassa</h3>
+						<p>
+							Med stigande ålder minskar muskelmassan naturligt – ett tillstånd kallat sarkopeni. Detta innebär att 
+																																										                        även om vikten förblir oförändrad, kan fettprocenten öka. Därför är det viktigt för äldre att 
+																																										                        kombinera BMI-mätning med styrketräning och proteinrik kost för att bevara muskelmassan.
+						</p>
+
+						<h3>Socialstyrelsen och svenska riktlinjer</h3>
+						<p>
+							Enligt Socialstyrelsen och svenska geriatriska riktlinjer bör äldre personer (65+) ha ett BMI mellan 
+																																										                        22 och 29 för optimal hälsa. Detta skiljer sig från standardgränsvärdena (18.5-25) som gäller för 
+																																										                        yngre vuxna. Undervikt hos äldre är förknippat med ökad dödlighet och komplikationer.
+						</p>
+
+						<h3>Tips för hälsosam vikt efter 65</h3>
+						<ul>
+							<li>Ät proteinrik kost för att bevara muskelmassa (1.2g protein per kg kroppsvikt)</li>
+							<li>Styrketräning 2-3 gånger per vecka för att bekämpa sarkopeni</li>
+							<li>Komplettera med D-vitamin och kalcium för starka ben</li>
+							<li>Gå på regelbundna hälsokontroller</li>
+							<li>Undvik crash-dieter som kan leda till muskelförlust</li>
+						</ul>
+
+						<h3>När bör du kontakta vården?</h3>
+						<p>
+							Rådgör med din läkare eller vårdgivare om du har ett BMI under 22 eller över 35, eller om du upplever 
+																																										                        oförklarlig viktnedgång. 1177 Vårdguiden kan ge ytterligare råd om hälsosam vikt för seniorer.
+						</p>
+
+						<p>
+							<a href="/bmi-formel/">Läs mer om hur BMI räknas ut</a>
+							eller
+							<a href="/">testa vår huvudsakliga BMI-räknare</a>.
+						</p>
+
+						{# Premium SEO Content Component #}
+						{% include 'components/content-aldre.twig' %}
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				{% include 'components/sidebar.twig' %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

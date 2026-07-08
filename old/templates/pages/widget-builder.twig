@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block title %}Lägg till BMI Räknare på din hemsida - Gratis Widget{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl text-brand-900">
+                Skapa din egen BMI Widget
+            </h1>
+            <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+                Driver du en blogg om hälsa, träning eller föräldraskap? Lägg till vår gratis BMI-räknare på din sida och ge dina besökare ett värdefullt verktyg.
+            </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- Instructions & Code -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="px-6 py-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Så här gör du:</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-600 mb-8">
+                        <li>Kopiera koden i rutan nedanför.</li>
+                        <li>Klistra in den i HTML-läget på din Wordpress-sida eller i din källkod.</li>
+                        <li>Widgeten anpassar sig automatiskt efter ditt utrymme.</li>
+                    </ol>
+
+                    <label for="code" class="block text-sm font-medium text-gray-700 mb-2">Din inbäddningskod:</label>
+                    <div class="relative rounded-md shadow-sm">
+                        <textarea id="code" rows="4" readonly class="focus:ring-brand-500 focus:border-brand-500 block w-full sm:text-sm border-gray-300 rounded-md font-mono bg-gray-50 text-gray-600 p-3" onclick="this.select()">
+<iframe src="https://bmi-raknare.se/embed/" width="100%" height="650" frameborder="0" style="border:0; overflow:hidden;" title="BMI Räknare från bmi-raknare.se"></iframe>
+                        </textarea>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Klicka på koden för att markera allt.</p>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div>
+                <h3 class="text-lg font-medium text-gray-900 mb-4 text-center lg:text-left">Förhandsgranskning:</h3>
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-100 flex justify-center">
+                   <iframe src="/embed/" width="100%" height="650" frameborder="0" style="border:0; max-width: 500px; background: transparent;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

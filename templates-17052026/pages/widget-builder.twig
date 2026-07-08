@@ -1,0 +1,263 @@
+{% extends "base.twig" %}
+
+{% block title %}BMI Widget – Gratis Kalkylator för Din Hemsida{% endblock %}
+{% block description %}Lägg till vår gratis BMI-räknare på din hemsida eller blogg. Responsiv widget med embed-kod för Wordpress, HTML och alla webbplatser. Enkel att integrera!{% endblock %}
+{% block canonical %}{{ base_url }}/widget/{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Hem",
+            "item": "{{ base_url }}/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Widget",
+            "item": "{{ base_url }}/widget/"
+        }
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BMI Widget",
+    "url": "{{ base_url }}/widget/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "SEK"
+    },
+    "description": "Gratis BMI-widget för integration på din hemsida eller blogg. Responsiv design som anpassar sig till ditt utrymme."
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Hur lägger jag till BMI-widgeten på min Wordpress-sida?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kopiera embed-koden och klistra in den i ett HTML-block eller Custom HTML-widget i Wordpress. Widgeten anpassar sig automatiskt till din sidbredd."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Kostar det något att använda BMI-widgeten?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nej, vår BMI-widget är helt gratis att använda på din hemsida eller blogg. Du behöver ingen registrering eller konto."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Fungerar widgeten på mobila enheter?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ja, widgeten är fullt responsiv och anpassar sig automatiskt till skärmstorleken – oavsett om besökaren använder dator, surfplatta eller smartphone."
+            }
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen">
+    
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-brand-50 to-indigo-50 border-b border-brand-100">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <nav class="flex text-sm text-gray-500 mb-4">
+                <a href="/" class="hover:text-brand-600">Hem</a>
+                <span class="mx-2">/</span>
+                <span class="font-medium text-gray-900">Widget</span>
+            </nav>
+            <h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl lg:text-4xl">
+                Gratis BMI Widget för Din Hemsida
+            </h1>
+            <p class="mt-2 text-lg text-gray-600">
+                Lägg till en professionell BMI-räknare på din blogg eller webbplats med en enkel embed-kod.
+            </p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        
+        <!-- Benefits Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">100% Gratis</h3>
+                <p class="text-gray-600 text-sm">Ingen kostnad, ingen registrering. Använd widgeten fritt på din sida.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Responsiv Design</h3>
+                <p class="text-gray-600 text-sm">Widgeten anpassar sig automatiskt till alla skärmstorlekar.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Snabb Integration</h3>
+                <p class="text-gray-600 text-sm">Kopiera och klistra in – klart på under en minut.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- Instructions & Code -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="px-6 py-8">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6">Så här gör du:</h2>
+                    <ol class="list-decimal list-inside space-y-4 text-gray-600 mb-8">
+                        <li class="flex items-start">
+                            <span class="bg-brand-100 text-brand-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">1</span>
+                            <span>Kopiera koden i rutan nedanför.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-brand-100 text-brand-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">2</span>
+                            <span>Klistra in den i HTML-läget på din Wordpress-sida eller i din källkod.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-brand-100 text-brand-700 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">3</span>
+                            <span>Widgeten anpassar sig automatiskt efter ditt utrymme.</span>
+                        </li>
+                    </ol>
+
+                    <label for="code" class="block text-sm font-medium text-gray-700 mb-2">Din inbäddningskod:</label>
+                    <div class="relative rounded-lg shadow-sm">
+                        <textarea id="code" rows="4" readonly class="focus:ring-brand-500 focus:border-brand-500 block w-full sm:text-sm border-gray-300 rounded-lg font-mono bg-gray-50 text-gray-600 p-4" onclick="this.select()">
+<iframe src="https://bmi-raknare.se/embed/" width="100%" height="650" frameborder="0" style="border:0; overflow:hidden;" title="BMI Räknare från bmi-raknare.se"></iframe>
+                        </textarea>
+                    </div>
+                    <p class="mt-2 text-sm text-gray-500">Klicka på koden för att markera allt.</p>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div>
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Förhandsgranskning:</h3>
+                <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 bg-gray-100 flex justify-center">
+                   <iframe src="/embed/" width="100%" height="650" frameborder="0" style="border:0; max-width: 500px; background: transparent;"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section for SEO -->
+        <div class="mt-12 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <div class="prose prose-brand prose-lg text-gray-600 max-w-none">
+                <h2>Varför använda vår BMI-widget?</h2>
+                <p>
+                    Att erbjuda dina besökare en BMI-räknare är ett utmärkt sätt att öka engagemang och ge mervärde på din hemsida. 
+                    Vår widget är perfekt för:
+                </p>
+                <ul>
+                    <li><strong>Hälsobloggar</strong> – Ge dina läsare ett interaktivt verktyg</li>
+                    <li><strong>Träningssidor</strong> – Komplettera dina träningsprogram</li>
+                    <li><strong>Dietister och nutritionister</strong> – Erbjud ett gratis verktyg till klienter</li>
+                    <li><strong>Föräldrabloggar</strong> – Hjälp föräldrar att följa barnens utveckling</li>
+                    <li><strong>Vårdmottagningar</strong> – Underlätta för patienter att beräkna sitt BMI</li>
+                </ul>
+
+                <h3>Tekniska specifikationer</h3>
+                <p>
+                    Vår embed-widget använder en responsiv iframe som automatiskt anpassar sig till din sidbredd. 
+                    Widgeten är optimerad för snabb laddning och fungerar på alla moderna webbläsare.
+                </p>
+                <ul>
+                    <li><strong>Höjd:</strong> 650 pixlar (rekommenderat minst 600px)</li>
+                    <li><strong>Bredd:</strong> 100% av föräldraelementet</li>
+                    <li><strong>Responsiv:</strong> Ja, fungerar på mobil, surfplatta och dator</li>
+                    <li><strong>HTTPS:</strong> Säker anslutning (SSL)</li>
+                </ul>
+
+                <h3>Kompatibilitet</h3>
+                <p>
+                    Widgeten fungerar med alla moderna plattformar:
+                </p>
+                <ul>
+                    <li>Wordpress (Classic Editor, Gutenberg, Elementor)</li>
+                    <li>Wix, Squarespace, Weebly</li>
+                    <li>Shopify (bloggsidor)</li>
+                    <li>Statiska HTML-sidor</li>
+                    <li>Alla plattformar som stödjer iframe-integrering</li>
+                </ul>
+
+                <h3>Villkor för användning</h3>
+                <p>
+                    Du får använda vår widget gratis på din webbplats så länge widgeten visas i sin helhet 
+                    och inte modifieras. Widgeten innehåller en länk tillbaka till vår sida, vilket hjälper 
+                    oss att fortsätta erbjuda gratis verktyg.
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mt-12 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Vanliga frågor om widgeten</h2>
+            <div class="space-y-4" x-data="{ active: null }">
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <h3 class="text-lg font-medium text-gray-900">Hur lägger jag till BMI-widgeten på min Wordpress-sida?</h3>
+                        <span x-show="active !== 1" class="text-gray-500 text-2xl font-light">+</span>
+                        <span x-show="active === 1" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                    </button>
+                    <div x-show="active === 1" x-collapse style="display: none;">
+                        <div class="px-6 py-4 text-gray-600 border-t border-gray-100">
+                            <p>I Gutenberg-editorn, lägg till ett "Custom HTML"-block och klistra in koden. I Classic Editor, växla till "Text"-läget (inte visuellt) och klistra in koden där du vill att widgeten ska visas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <h3 class="text-lg font-medium text-gray-900">Kostar det något att använda BMI-widgeten?</h3>
+                        <span x-show="active !== 2" class="text-gray-500 text-2xl font-light">+</span>
+                        <span x-show="active === 2" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                    </button>
+                    <div x-show="active === 2" x-collapse style="display: none;">
+                        <div class="px-6 py-4 text-gray-600 border-t border-gray-100">
+                            <p>Nej, vår BMI-widget är helt gratis att använda på din hemsida eller blogg. Du behöver ingen registrering eller konto. Vi finansierar tjänsten genom att widgeten innehåller en diskret länk tillbaka till vår sida.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button @click="active = (active === 3 ? null : 3)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                        <h3 class="text-lg font-medium text-gray-900">Kan jag ändra storlek på widgeten?</h3>
+                        <span x-show="active !== 3" class="text-gray-500 text-2xl font-light">+</span>
+                        <span x-show="active === 3" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                    </button>
+                    <div x-show="active === 3" x-collapse style="display: none;">
+                        <div class="px-6 py-4 text-gray-600 border-t border-gray-100">
+                            <p>Ja, du kan justera bredden genom att ändra <code>width</code>-attributet (t.ex. <code>width="400"</code> för 400 pixlar). Höjden bör vara minst 600 pixlar för att visa hela kalkylatorn ordentligt.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

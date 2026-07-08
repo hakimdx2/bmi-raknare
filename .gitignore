@@ -1,0 +1,6 @@
+node_modules/
+vendor/
+cache/
+composer.lock.zip
+.DS_Store
+*.log

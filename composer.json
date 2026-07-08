@@ -1,0 +1,20 @@
+{
+    "name": "hkmweb/bmi-raknare",
+    "description": "Premium BMI Calculator for Swedish Market",
+    "type": "project",
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "slim/twig-view": "^3.4",
+        "vlucas/phpdotenv": "^5.6",
+        "php-di/php-di": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}

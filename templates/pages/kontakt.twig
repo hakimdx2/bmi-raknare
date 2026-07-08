@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block title %}Kontakta Oss | bmi-raknare.se{% endblock %}
+{% block description %}Har du frågor eller förslag? Kontakta redaktionen bakom bmi-raknare.se här.{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen py-10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Kontakta Oss</h1>
+        
+        <div class="prose prose-brand prose-lg bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <p>
+                Har du frågor om våra verktyg, hittat ett fel, eller vill du annonsera? Tveka inte att höra av dig!
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+                <p class="m-0 text-blue-800">
+                    <strong>Observera:</strong> Vi är en informationstjänst och kan <em>inte</em> ge medicinsk rådgivning. Vid hälsoproblem ska du alltid kontakta 1177 eller din vårdcentral.
+                </p>
+            </div>
+
+            <h2>E-post</h2>
+            <p>
+                Du når oss enklast på: <br>
+                <a href="mailto:kontakt@bmi-raknare.se" class="font-bold text-brand-600 hover:text-brand-800">kontakt@bmi-raknare.se</a>
+            </p>
+
+            <h2>Företagsuppgifter</h2>
+            <p>
+                BMI-Räknare.se drivs av Media House AB (exempel).<br>
+                Box 123 45<br>
+                100 00 Stockholm
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

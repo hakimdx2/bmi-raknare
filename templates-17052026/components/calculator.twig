@@ -1,0 +1,348 @@
+<div x-data="bmiCalculator()" class="py-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Input Section -->
+        <div class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Kön</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button @click="gender = 'female'" 
+                            :class="{'bg-{{ female_color|default('pink') }}-50 border-{{ female_color|default('pink') }}-500 text-{{ female_color|default('pink') }}-700 ring-2 ring-{{ female_color|default('pink') }}-200': gender === 'female', 'bg-white border-gray-300 text-gray-700 hover:border-gray-400': gender !== 'female'}" 
+                            class="border-2 rounded-xl py-4 px-4 flex items-center justify-center text-sm font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all duration-200"
+                            aria-label="Välj kvinna">
+                        <svg class="w-5 h-5 mr-2" :class="gender === 'female' ? 'text-{{ female_color|default('pink') }}-500' : 'text-gray-400'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        Kvinna
+                    </button>
+                    <button @click="gender = 'male'" 
+                            :class="{'bg-{{ male_color|default('blue') }}-50 border-{{ male_color|default('blue') }}-500 text-{{ male_color|default('blue') }}-700 ring-2 ring-{{ male_color|default('blue') }}-200': gender === 'male', 'bg-white border-gray-300 text-gray-700 hover:border-gray-400': gender !== 'male'}" 
+                            class="border-2 rounded-xl py-4 px-4 flex items-center justify-center text-sm font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition-all duration-200"
+                            aria-label="Välj man">
+                        <svg class="w-5 h-5 mr-2" :class="gender === 'male' ? 'text-{{ male_color|default('blue') }}-500' : 'text-gray-400'" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                        Man
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div class="relative group">
+                    <label for="age" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+                        Ålder
+                        <span class="ml-1 cursor-help" x-data="{ show: false }" @mouseenter="show = true" @mouseleave="show = false">
+                            <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <div x-show="show" x-transition class="absolute z-20 left-0 mt-1 w-48 bg-gray-900 text-white text-xs rounded-lg p-2 shadow-lg">
+                                Ålder påverkar tolkningen av ditt BMI
+                            </div>
+                        </span>
+                    </label>
+                    <div class="relative rounded-xl shadow-sm">
+                        <input type="number" name="age" id="age" x-model.number="age" 
+                               class="block w-full pl-4 pr-12 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-200 hover:border-gray-300" 
+                               placeholder="35">
+                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-sm font-medium bg-gray-50 px-2 py-1 rounded">år</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="weight" class="block text-sm font-medium text-gray-700 mb-1">Vikt</label>
+                    <div class="relative rounded-xl shadow-sm">
+                        <input type="number" name="weight" id="weight" x-model.number="weight" 
+                               class="block w-full pl-4 pr-12 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-200 hover:border-gray-300" 
+                               placeholder="70">
+                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-sm font-medium bg-gray-50 px-2 py-1 rounded">kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label for="height" class="block text-sm font-medium text-gray-700 mb-1">Längd</label>
+                <div class="relative rounded-xl shadow-sm">
+                    <input type="number" name="height" id="height" x-model.number="height" 
+                           class="block w-full pl-4 pr-12 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-200 hover:border-gray-300" 
+                           placeholder="170">
+                    <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
+                        <span class="text-gray-400 text-sm font-medium bg-gray-50 px-2 py-1 rounded">cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waist Input (Advanced) -->
+            <div x-data="{ expanded: false }">
+                <button @click="expanded = !expanded" class="flex items-center text-sm text-gray-500 hover:text-gray-700 transition-colors">
+                    <svg class="h-4 w-4 mr-1 transition-transform duration-200" :class="expanded ? 'rotate-90' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    Utökad analys (midjemått)
+                </button>
+                <div x-show="expanded" x-transition class="mt-3">
+                    <label for="waist" class="block text-sm font-medium text-gray-700 mb-1">
+                        Midjemått <span class="text-gray-400 font-normal">(Valfritt)</span>
+                    </label>
+                    <div class="relative rounded-xl shadow-sm">
+                        <input type="number" name="waist" id="waist" x-model.number="waist" 
+                               class="block w-full pl-4 pr-12 py-4 text-lg border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-200" 
+                               placeholder="85">
+                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-sm font-medium bg-gray-50 px-2 py-1 rounded">cm</span>
+                        </div>
+                    </div>
+                    <p class="mt-1 text-xs text-gray-500">Mät där midjan är som smalast, ca 1 cm ovanför naveln.</p>
+                </div>
+            </div>
+
+            <!-- Validation Error -->
+            <div x-show="error" x-transition class="rounded-xl bg-red-50 p-4 border border-red-100">
+                <div class="flex">
+                    <svg class="h-5 w-5 text-red-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <p class="text-sm font-medium text-red-800" x-text="error"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl p-6 border border-brand-200 flex flex-col justify-center relative overflow-hidden">
+            <!-- Trust Badge -->
+            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-semibold text-brand-800 border border-brand-200 shadow-sm flex items-center">
+                <svg class="h-4 w-4 mr-1.5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                1177 & WHO
+            </div>
+
+            <template x-if="bmi > 0">
+                <div class="space-y-5 z-10 pt-6" x-data="{ displayBmi: 0, lastBmi: 0, celebrated: false }" x-effect="
+                    if (bmi !== lastBmi) {
+                        let start = displayBmi;
+                        let end = bmi;
+                        let duration = 500;
+                        let startTime = null;
+                        function animate(currentTime) {
+                            if (!startTime) startTime = currentTime;
+                            let progress = Math.min((currentTime - startTime) / duration, 1);
+                            displayBmi = Math.round((start + (end - start) * progress) * 10) / 10;
+                            if (progress < 1) requestAnimationFrame(animate);
+                        }
+                        requestAnimationFrame(animate);
+                        lastBmi = bmi;
+                        
+                        // Trigger confetti for Normalvikt
+                        if (classification.includes('Normalvikt') && !celebrated) {
+                            celebrated = true;
+                            for (let i = 0; i < 30; i++) {
+                                setTimeout(() => {
+                                    const confetti = document.createElement('div');
+                                    confetti.className = 'confetti';
+                                    confetti.style.left = Math.random() * 100 + 'vw';
+                                    confetti.style.backgroundColor = ['#10b981', '#34d399', '#6ee7b7', '#fbbf24', '#f59e0b'][Math.floor(Math.random() * 5)];
+                                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                                    confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+                                    document.body.appendChild(confetti);
+                                    setTimeout(() => confetti.remove(), 4000);
+                                }, i * 50);
+                            }
+                        }
+                    }
+                ">
+                    <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider">Ditt Resultat</p>
+                    
+                    <!-- Big BMI Number with Animation -->
+                    <div class="flex items-baseline space-x-3">
+                        <span class="text-6xl font-black text-gray-900 tabular-nums" x-text="displayBmi.toFixed(1)"></span>
+                        <span class="text-2xl text-gray-500 font-semibold">BMI</span>
+                    </div>
+
+                    <!-- BMI Gauge -->
+                    <div class="relative h-4 bg-gray-200 rounded-full overflow-hidden shadow-inner">
+                        <!-- Colored segments -->
+                        <div class="absolute inset-0 flex">
+                            <div class="h-full bg-blue-400" style="width: 18.5%"></div>
+                            <div class="h-full bg-green-400" style="width: 25%"></div>
+                            <div class="h-full bg-yellow-400" style="width: 19%"></div>
+                            <div class="h-full bg-orange-400" style="width: 20%"></div>
+                            <div class="h-full bg-red-400" style="width: 17.5%"></div>
+                        </div>
+                        <!-- Indicator -->
+                        <div class="absolute top-0 h-full w-1 bg-gray-900 shadow-lg rounded transition-all duration-500 ease-out"
+                             :style="'left: ' + Math.min(Math.max((bmi / 40) * 100, 0), 100) + '%'">
+                        </div>
+                    </div>
+                    <!-- Gauge Labels -->
+                    <div class="flex justify-between text-xs text-gray-500 -mt-1">
+                        <span>15</span>
+                        <span>18.5</span>
+                        <span>25</span>
+                        <span>30</span>
+                        <span>40</span>
+                    </div>
+
+                    <!-- Classification Badge -->
+                    <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold shadow-sm" :class="statusColorClass">
+                        <span x-text="classification"></span>
+                        <template x-if="classification.includes('Normalvikt')">
+                            <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                        </template>
+                    </div>
+
+                    <!-- Ideal Weight Display -->
+                    <div class="bg-white/80 backdrop-blur p-4 rounded-xl border border-gray-200 shadow-sm">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Din Idealvikt</p>
+                                <p class="text-xl font-bold text-gray-800" x-text="idealWeightRange"></p>
+                            </div>
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Waist Analysis -->
+                    <template x-if="waist > 0">
+                        <div class="bg-white/80 backdrop-blur p-4 rounded-xl border border-gray-200 shadow-sm">
+                            <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">Midjemått Analys</p>
+                            <p class="text-sm font-semibold" :class="waistRisk.color" x-text="waistRisk.text"></p>
+                        </div>
+                    </template>
+
+                    <p class="text-gray-600 text-sm leading-relaxed" x-text="analysis"></p>
+
+                    <!-- Senior Notice -->
+                    <div x-show="isSenior" class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                        <p class="text-sm text-amber-800">
+                            <strong>Obs:</strong> Eftersom du är över 65 år har vi anpassat normalvärdena (22-29).
+                        </p>
+                    </div>
+
+                    <!-- Child/Teen Warning -->
+                    <div x-show="isChild" class="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                         <p class="text-sm text-yellow-800">
+                            <strong x-text="isTeen ? 'Tonåring (ISO-BMI):' : 'Barn (ISO-BMI):'"></strong> 
+                            För <span x-text="isTeen ? 'ungdomar' : 'barn'"></span> under 18 år gäller en annan skala. 
+                            <a href="/bmi-barn/" class="underline font-bold hover:text-yellow-900">Se tabell här</a>.
+                        </p>
+                    </div>
+                </div>
+            </template>
+            
+            <template x-if="bmi === 0">
+                <div class="text-center z-10 py-8">
+                    <div class="w-20 h-20 mx-auto bg-brand-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="h-10 w-10 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-600 font-medium text-lg">Fyll i dina uppgifter</p>
+                    <p class="text-gray-400 text-sm mt-1">för att se ditt BMI-resultat</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+<script>
+function bmiCalculator() {
+    return {
+        weight: '',
+        height: '',
+        waist: '',
+        age: '',
+        gender: 'female',
+        error: '',
+        
+        get bmi() {
+            if (this.weight > 0 && this.height > 0) {
+                let h = this.height / 100;
+                let val = this.weight / (h * h);
+                return Math.round(val * 10) / 10;
+            }
+            return 0;
+        },
+
+        get isSenior() {
+            return this.age >= 65;
+        },
+
+        get isChild() {
+            return this.age > 0 && this.age < 18;
+        },
+
+        get isTeen() {
+            return this.age >= 13 && this.age <= 19;
+        },
+
+        get classification() {
+            let bmi = this.bmi;
+            if (bmi === 0) return '';
+            
+            if (this.isSenior) {
+                if (bmi < 22) return 'Undervikt';
+                if (bmi <= 29) return 'Normalvikt (Senior)';
+                if (bmi <= 35) return 'Övervikt';
+                return 'Fetma';
+            }
+            
+            if (bmi < 18.5) return 'Undervikt';
+            if (bmi < 25) return 'Normalvikt';
+            if (bmi < 30) return 'Övervikt';
+            return 'Fetma';
+        },
+
+        get statusColorClass() {
+            let c = this.classification;
+            if (c.includes('Undervikt')) return 'bg-blue-100 text-blue-800 border border-blue-200';
+            if (c.includes('Normalvikt')) return 'bg-green-100 text-green-800 border border-green-200';
+            if (c.includes('Övervikt')) return 'bg-orange-100 text-orange-800 border border-orange-200';
+            return 'bg-red-100 text-red-800 border border-red-200';
+        },
+
+        get analysis() {
+             let c = this.classification;
+             if (c.includes('Normalvikt')) return 'Grattis! Du har en hälsosam vikt enligt WHO:s riktlinjer.';
+             if (c.includes('Övervikt')) return 'Du ligger strax över normalvikt. Små förändringar i kost och motion kan göra skillnad.';
+             if (c.includes('Fetma')) return 'Ditt BMI indikerar fetma. Vi rekommenderar att du konsulterar en läkare för rådgivning.';
+             if (c.includes('Undervikt')) return 'Ditt BMI indikerar undervikt. Se till att du får i dig tillräckligt med näring.';
+             return '';
+        },
+
+        get idealWeightRange() {
+            if (this.height > 0) {
+                let h = this.height / 100;
+                let minBMI = this.isSenior ? 22 : 18.5;
+                let maxBMI = this.isSenior ? 29 : 25;
+                
+                let minWeight = Math.round(minBMI * h * h);
+                let maxWeight = Math.round(maxBMI * h * h);
+                
+                return `${minWeight} kg – ${maxWeight} kg`;
+            }
+            return '-';
+        },
+
+        get waistRisk() {
+            if (!this.waist) return { text: '', color: '' };
+            
+            let risk = 'Låg risk';
+            let color = 'text-green-600';
+            
+            if (this.gender === 'male') {
+                if (this.waist >= 102) {
+                    risk = 'Hög hälsorisk (Bukfetma)';
+                    color = 'text-red-600';
+                } else if (this.waist >= 94) {
+                    risk = 'Ökad hälsorisk';
+                    color = 'text-orange-600';
+                }
+            } else {
+                if (this.waist >= 88) {
+                    risk = 'Hög hälsorisk (Bukfetma)';
+                    color = 'text-red-600';
+                } else if (this.waist >= 80) {
+                    risk = 'Ökad hälsorisk';
+                    color = 'text-orange-600';
+                }
+            }
+            
+            return { text: risk, color: color };
+        }
+    }
+}
+</script>

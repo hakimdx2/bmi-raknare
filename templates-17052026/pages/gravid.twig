@@ -1,0 +1,304 @@
+{% extends "base.twig" %}
+
+{% set current_month = "now"|date("F") %}
+{% set current_year = "now"|date("Y") %}
+{% set swedish_months = {
+    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
+    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
+    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
+} %}
+{% set month_sv = swedish_months[current_month] %}
+
+{% block title %}BMI Räknare Gravid – Viktuppgång & Kalkylator ({{ month_sv }}
+	{{ current_year }})
+{% endblock %}
+{% block description %}BMI-kalkylator för gravida. Beräkna ditt BMI och se rekommenderad viktuppgång enligt svenska riktlinjer. Uppdaterad
+	{{ month_sv }}
+	{{ current_year }}.
+{% endblock %}
+{% block canonical %}
+	{{ base_url }}/bmi-gravid/
+{% endblock %}
+
+{% block schema %}
+	<script type="application/ld+json">
+		{
+										    "@context": "https://schema.org",
+										    "@type": "BreadcrumbList",
+										    "itemListElement": [
+										        {
+										            "@type": "ListItem",
+										            "position": 1,
+										            "name": "Hem",
+										            "item": "{{ base_url }}/"
+										        },
+										        {
+										            "@type": "ListItem",
+										            "position": 2,
+										            "name": "BMI Gravid",
+										            "item": "{{ base_url }}/bmi-gravid/"
+										        }
+										    ]
+										}
+	</script>
+	<script type="application/ld+json">
+		{
+										    "@context": "https://schema.org",
+										    "@type": "WebApplication",
+										    "name": "BMI Räknare för Gravida",
+										    "url": "{{ base_url }}/bmi-gravid/",
+										    "applicationCategory": "HealthApplication",
+										    "operatingSystem": "All",
+										    "offers": {
+										        "@type": "Offer",
+										        "price": "0",
+										        "priceCurrency": "SEK"
+										    },
+										    "description": "BMI-kalkylator anpassad för gravida kvinnor med rekommendationer för viktuppgång under graviditeten."
+										}
+	</script>
+	<script type="application/ld+json">
+		{
+										    "@context": "https://schema.org",
+										    "@type": "FAQPage",
+										    "mainEntity": [
+										        {
+										            "@type": "Question",
+										            "name": "Hur mycket ska jag gå upp i vikt under graviditeten?",
+										            "acceptedAnswer": {
+										                "@type": "Answer",
+										                "text": "Det beror på ditt BMI före graviditeten. Med normalvikt (BMI 18.5-24.9) rekommenderas 11.5-16 kg, med övervikt (BMI 25-29.9) rekommenderas 7-11.5 kg, och med fetma (BMI >30) rekommenderas 5-9 kg."
+										            }
+										        },
+										        {
+										            "@type": "Question",
+										            "name": "Varför är BMI viktigt under graviditeten?",
+										            "acceptedAnswer": {
+										                "@type": "Answer",
+										                "text": "Ditt BMI innan graviditeten påverkar risker för både dig och barnet, inklusive graviditetsdiabetes, högt blodtryck och förlossningskomplikationer."
+										            }
+										        },
+										        {
+										            "@type": "Question",
+										            "name": "Kan jag använda vanlig BMI-kalkylator när jag är gravid?",
+										            "acceptedAnswer": {
+										                "@type": "Answer",
+										                "text": "Nej, under graviditeten bör du inte använda vanliga BMI-gränsvärden. Istället utgår man från ditt BMI före graviditeten för att avgöra rekommenderad viktuppgång."
+										            }
+										        }
+										    ]
+										}
+	</script>
+{% endblock %}
+
+{% block content %}
+	<div
+		class="bg-gray-50 min-h-screen">
+
+		<!-- Header -->
+		<div class="bg-gradient-to-r from-rose-50 to-pink-50 border-b border-rose-100">
+			<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+				<nav class="flex text-sm text-gray-500 mb-4">
+					<a href="/" class="hover:text-brand-600">Hem</a>
+					<span class="mx-2">/</span>
+					<span class="font-medium text-gray-900">Gravid</span>
+				</nav>
+				<div class="flex items-center space-x-3">
+					<span class="w-3 h-3 rounded-full bg-rose-500"></span>
+					<h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl lg:text-4xl">
+						BMI Räknare för Gravida
+					</h1>
+				</div>
+				<p class="mt-2 text-lg text-gray-600">
+					Beräkna ditt BMI före graviditeten och få personliga rekommendationer för hälsosam viktuppgång.
+				</p>
+			</div>
+		</div>
+
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div
+				class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+				<!-- Main Content -->
+				<div
+					class="lg:col-span-2">
+					<!-- Important Notice -->
+					<div class="bg-rose-50 border border-rose-200 rounded-xl p-6 mb-8">
+						<div class="flex items-start">
+							<svg class="h-6 w-6 text-rose-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+							</svg>
+							<div>
+								<h2 class="text-lg font-bold text-rose-900 mb-2">Viktigt att veta</h2>
+								<p class="text-rose-800 text-sm">
+									Under graviditeten bör du
+									<strong>inte använda vanliga BMI-gränsvärden</strong>. Istället utgår man från ditt BMI
+									<em>före</em>
+									graviditeten för att avgöra hur mycket du bör gå upp i vikt under de 9 månaderna.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Calculator Card -->
+					<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-8">
+						<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+							<h2 class="text-xl font-bold text-gray-900">Steg 1: Beräkna ditt BMI före graviditeten</h2>
+							<!-- Trust badge inline -->
+							<div class="flex items-center mt-2 sm:mt-0 text-xs text-gray-500">
+								<svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+								</svg>
+								Medicinskt granskad
+							</div>
+						</div>
+						<p class="text-gray-500 text-sm mb-6">Ange din vikt
+							<strong>innan</strong>
+							du blev gravid.</p>
+						{% include 'components/calculator.twig' %}
+
+						{% include 'components/medical-review.twig' %}
+					</div>
+
+					<!-- Weight Gain Table -->
+					<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-8">
+						<h2 class="text-xl font-bold text-gray-900 mb-6">Steg 2: Rekommenderad viktuppgång</h2>
+
+						<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+							<table class="min-w-full divide-y divide-gray-300">
+								<thead class="bg-rose-50">
+									<tr>
+										<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">BMI före graviditet</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Kategori</th>
+										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rekommenderad uppgång</th>
+									</tr>
+								</thead>
+								<tbody class="divide-y divide-gray-200 bg-white">
+									<tr>
+										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">&lt; 18.5</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Undervikt</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-rose-600 font-semibold">12.5 – 18 kg</td>
+									</tr>
+									<tr class="bg-green-50">
+										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-green-800">18.5 – 24.9</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-green-700">Normalvikt</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-green-700 font-semibold">11.5 – 16 kg</td>
+									</tr>
+									<tr>
+										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">25.0 – 29.9</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Övervikt</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-orange-600 font-semibold">7 – 11.5 kg</td>
+									</tr>
+									<tr>
+										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">&gt; 30</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Fetma</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-red-600 font-semibold">5 – 9 kg</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p class="text-xs text-gray-500 mt-4">Källa: IOM (Institute of Medicine) / Svenska riktlinjer via 1177 Vårdguiden</p>
+
+						<!-- New Swedish Research 2026 -->
+						<div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-6">
+							<div class="flex items-start">
+								<svg class="h-5 w-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+								</svg>
+								<div>
+									<p class="font-bold text-blue-900 text-sm">Ny svensk forskning 2026</p>
+									<p class="text-blue-800 text-sm mt-1">
+										Enligt nya svenska studier kan kvinnor med BMI ≥35 ha
+										<strong>0-6 kg viktuppgång</strong>
+										som mål 
+																																																		                                    (jämfört med IOM:s 5-9 kg). Vissa experter menar att minimal viktuppgång vid högt BMI kan 
+																																																		                                    minska komplikationsrisker. Diskutera alltid med din barnmorska för individuella råd.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Content Area -->
+					<div class="prose prose-brand prose-lg text-gray-600 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+						<h2>Varför är BMI viktigt under graviditeten?</h2>
+						<p>
+							Ditt BMI innan graviditeten påverkar risker för både dig och barnet. Kvinnor med övervikt eller fetma har högre risk för:
+						</p>
+						<ul>
+							<li>Graviditetsdiabetes</li>
+							<li>Högt blodtryck (preeklampsi)</li>
+							<li>Kejsarsnitt</li>
+							<li>Större barn (makrosomi)</li>
+						</ul>
+
+						<h3>Viktuppgång per trimester</h3>
+						<p>Den rekommenderade viktökningen fördelas olika under graviditetens tre trimestrar:</p>
+						<ul>
+							<li>
+								<strong>Första trimestern (vecka 1-12):</strong>
+								Ofta minimal eller ingen viktökning, ibland viktminskning på grund av illamående.</li>
+							<li>
+								<strong>Andra trimestern (vecka 13-26):</strong>
+								Ca 0.3-0.5 kg per vecka för kvinnor med normalvikt.</li>
+							<li>
+								<strong>Tredje trimestern (vecka 27-40):</strong>
+								Ca 0.3-0.5 kg per vecka, men takten kan avta mot slutet.</li>
+						</ul>
+
+						<h3>Var hamnar vikten under graviditeten?</h3>
+						<p>Den rekommenderade viktökningen består av:</p>
+						<ul>
+							<li>
+								<strong>Barnet:</strong>
+								ca 3-4 kg</li>
+							<li>
+								<strong>Moderkaka:</strong>
+								ca 0.5-1 kg</li>
+							<li>
+								<strong>Fostervatten:</strong>
+								ca 1 kg</li>
+							<li>
+								<strong>Livmoder:</strong>
+								ca 1 kg</li>
+							<li>
+								<strong>Brösten:</strong>
+								ca 0.5-1 kg</li>
+							<li>
+								<strong>Ökad blodvolym:</strong>
+								ca 1.5 kg</li>
+							<li>
+								<strong>Vätskeretention:</strong>
+								ca 1-2 kg</li>
+							<li>
+								<strong>Fettreserv:</strong>
+								resten</li>
+						</ul>
+
+						<h3>Näring under graviditeten</h3>
+						<p>
+							En varierad kost är viktigast, men du behöver inte "äta för två". Energibehovet ökar med endast 
+																																			                        cirka 300-400 kcal per dag under andra och tredje trimestern. Fokusera på järnrika livsmedel, 
+																																			                        folsyra (folat), kalcium och omega-3-fettsyror.
+						</p>
+
+						<h3>Prata alltid med din barnmorska</h3>
+						<p>
+							Denna information är generell. Din barnmorska eller läkare kan ge dig personliga råd baserat på din hälsa, ålder och eventuella riskfaktorer. 
+																																			                        Besök
+							<a href="https://www.1177.se" target="_blank" rel="noopener">1177 Vårdguiden</a>
+							för mer information om graviditet och hälsa.
+						</p>
+
+						{# Premium SEO Content Component #}
+						{% include 'components/content-gravid.twig' %}
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				{% include 'components/sidebar.twig' %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

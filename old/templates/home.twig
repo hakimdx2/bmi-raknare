@@ -1,0 +1,197 @@
+{% extends "base.twig" %}
+
+{% block title %}BMI Räknare: Räkna ut BMI Gratis & Enkelt (Kalkylator 2026){% endblock %}
+{% block description %}Använd vår gratis BMI Räknare för att räkna ut ditt BMI direkt. Enkel kalkylator för kvinna, man och barn. Se om du är normalviktig enligt WHO.{% endblock %}
+{% block canonical %}{{ base_url }}/{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    
+    <!-- Hero Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl tracking-tight">
+        <span class="block text-brand-600">BMI Räknare</span>
+        <span class="block text-2xl sm:text-3xl font-medium text-gray-500 mt-2">Räkna ut ditt BMI gratis & direkt</span>
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+        Använd vår avancerade kalkylator för kvinnor, män och barn. Vi tar hänsyn till ålder och kön för att ge dig ett exakt resultat.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+        <div class="p-6 sm:p-10">
+            {% include 'components/calculator.twig' %}
+        </div>
+        <div class="bg-gray-50 px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <svg class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Baserat på WHO:s riktlinjer</span>
+            </div>
+            <div class="text-sm text-gray-400">
+                Uppdaterad: {{ "now"|date("Y-m-d") }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust / Content Section -->
+    <!-- Content & FAQ Section -->
+    <div class="max-w-3xl mx-auto mt-16">
+        
+        <!-- Medical Trust Signals -->
+        <div class="mb-12">
+            {% include 'components/medical-review.twig' %}
+        </div>
+
+        <div class="prose prose-brand prose-lg text-gray-600 mb-10">
+            <h2 class="text-3xl font-bold text-center mb-8">Vanliga frågor om BMI</h2>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="space-y-4" x-data="{ active: null }" itemscope itemtype="https://schema.org/FAQPage">
+            
+            <!-- Q1 -->
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button @click="active = (active === 1 ? null : 1)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <h3 class="text-lg font-medium text-gray-900" itemprop="name">Vad är BMI?</h3>
+                    <span x-show="active !== 1" class="text-gray-500 text-2xl font-light">+</span>
+                    <span x-show="active === 1" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                </button>
+                <div x-show="active === 1" x-collapse style="display: none;" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div class="px-6 py-4 text-gray-600 border-t border-gray-100" itemprop="text">
+                        <p>BMI (Body Mass Index) är ett grovt mått som används av WHO och vården för att klassificera vikt i relation till längd. Det ger en snabb indikation på om du ligger i riskzonen för undervikt, övervikt eller fetma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button @click="active = (active === 2 ? null : 2)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <h3 class="text-lg font-medium text-gray-900" itemprop="name">Vilket BMI ska man ha?</h3>
+                    <span x-show="active !== 2" class="text-gray-500 text-2xl font-light">+</span>
+                    <span x-show="active === 2" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                </button>
+                <div x-show="active === 2" x-collapse style="display: none;" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div class="px-6 py-4 text-gray-600 border-t border-gray-100" itemprop="text">
+                        <p>Enligt standarden anses ett BMI mellan <strong>18.5 och 25</strong> vara normalvikt för vuxna. För personer över 65 år är idealet högre, mellan <strong>22 och 29</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button @click="active = (active === 3 ? null : 3)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <h3 class="text-lg font-medium text-gray-900" itemprop="name">Hur räknas BMI ut?</h3>
+                    <span x-show="active !== 3" class="text-gray-500 text-2xl font-light">+</span>
+                    <span x-show="active === 3" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                </button>
+                <div x-show="active === 3" x-collapse style="display: none;" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div class="px-6 py-4 text-gray-600 border-t border-gray-100" itemprop="text">
+                        <p>Formeln är enkel: <code>Vikt (kg) / (Längd (m) * Längd (m))</code>. Vår kalkylator gör detta automatiskt, och du behöver inte konvertera din längd till meter själv.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <button @click="active = (active === 4 ? null : 4)" class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none bg-gray-50 hover:bg-gray-100 transition-colors">
+                    <h3 class="text-lg font-medium text-gray-900" itemprop="name">Är BMI ett bra mått?</h3>
+                    <span x-show="active !== 4" class="text-gray-500 text-2xl font-light">+</span>
+                    <span x-show="active === 4" class="text-brand-600 text-2xl font-light" style="display: none;">−</span>
+                </button>
+                <div x-show="active === 4" x-collapse style="display: none;" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div class="px-6 py-4 text-gray-600 border-t border-gray-100" itemprop="text">
+                        <p>BMI är ett bra generellt verktyg men det skiljer inte på fett och muskler. Därför har vi lagt till funktionen <strong>Midjemått</strong> i vår räknare för att ge en mer rättvisande bild av din hälsa.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Additional SEO Content -->
+        <div class="prose prose-brand prose-lg text-gray-600 mt-12 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h2>Om vår BMI-kalkylator</h2>
+            <p>
+                Vår kostnadsfria BMI-räknare är utvecklad för att ge dig en snabb och exakt beräkning av ditt Body Mass Index. 
+                Till skillnad från enklare verktyg tar vår kalkylator hänsyn till din <strong>ålder</strong> och <strong>kön</strong>, 
+                vilket ger ett mer nyanserat resultat, särskilt för <a href="/bmi-barn/">barn</a> och <a href="/bmi-kvinna/">kvinnor</a>.
+            </p>
+            <h3>Vad gör oss unika?</h3>
+            <ul>
+                <li><strong>Senioranpassning:</strong> För personer över 65 år justeras gränsvärdena enligt aktuella rekommendationer (22-29 istället för 18.5-25).</li>
+                <li><strong>Midjemått:</strong> Du kan valfritt ange ditt midjemått för en mer komplett riskbedömning av bukfetma.</li>
+                <li><strong>Idealvikt:</strong> Vi visar din beräknade idealviktsintervall baserat på din längd.</li>
+            </ul>
+            <p>
+                BMI är ett användbart screeningverktyg, men det är viktigt att komma ihåg att det inte skiljer på fett och muskelmassa. 
+                För en fullständig hälsobedömning rekommenderar vi att du konsulterar en läkare. 
+                <a href="/bmi-formel/">Läs mer om hur BMI räknas ut</a>.
+            </p>
+        </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Vad är BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI (Body Mass Index) är ett grovt mått som används av WHO och vården för att klassificera vikt i relation till längd. Det ger en snabb indikation på om du ligger i riskzonen för undervikt, övervikt eller fetma."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vilket BMI ska man ha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enligt standarden anses ett BMI mellan 18.5 och 25 vara normalvikt för vuxna. För personer över 65 år är idealet högre, mellan 22 och 29."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hur räknas BMI ut?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Formeln är enkel: Vikt (kg) / (Längd (m) * Längd (m)). Vår kalkylator gör detta automatiskt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Är BMI ett bra mått?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI är ett bra generellt verktyg men det skiljer inte på fett och muskler. Därför erbjuder vi även möjligheten att ange midjemått för en mer rättvisande bild av din hälsa."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BMI Räknare",
+  "url": "{{ base_url }}",
+  "description": "Beräkna ditt BMI gratis och direkt med vår exakta kalkylator för kvinnor, män och barn. Vi tar hänsyn till ålder och visar din idealvikt.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  }
+}
+</script>
+{% endblock %}
