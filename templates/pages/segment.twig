@@ -38,12 +38,8 @@
 
 {% set data = segment_data[segment] %}
 
-{% block title %}
-	{{ data.title }}
-{% endblock %}
-{% block description %}
-	{{ data.description }}
-{% endblock %}
+{% block title %}{{ data.title }}{% endblock %}
+{% block description %}{{ data.description }}{% endblock %}
 {% block canonical %}
 	{{ base_url }}/bmi-{{ segment }}/
 {% endblock %}
