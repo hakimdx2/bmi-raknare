@@ -1,0 +1,1369 @@
+{
+  "site": "sc-domain:bmi-raknare.se",
+  "date": "2026-07-13",
+  "period": "2026-06-13 → 2026-07-13",
+  "comparison_period": "2026-05-14 → 2026-06-12",
+  "top_queries": [
+    {
+      "query": "bmi-räknare kvinna ålder",
+      "clicks": 100,
+      "impressions": 2851,
+      "ctr": 3.5,
+      "position": 7.2
+    },
+    {
+      "query": "bmi äldre kvinna",
+      "clicks": 63,
+      "impressions": 643,
+      "ctr": 9.8,
+      "position": 4.8
+    },
+    {
+      "query": "räkna ut iso-bmi barn",
+      "clicks": 51,
+      "impressions": 111,
+      "ctr": 45.9,
+      "position": 2.2
+    },
+    {
+      "query": "iso bmi barn",
+      "clicks": 26,
+      "impressions": 171,
+      "ctr": 15.2,
+      "position": 4.3
+    },
+    {
+      "query": "bmi barn",
+      "clicks": 24,
+      "impressions": 1139,
+      "ctr": 2.1,
+      "position": 8.2
+    },
+    {
+      "query": "bmi kvinna 70 år",
+      "clicks": 20,
+      "impressions": 172,
+      "ctr": 11.6,
+      "position": 6.2
+    },
+    {
+      "query": "bmi räknare barn",
+      "clicks": 16,
+      "impressions": 372,
+      "ctr": 4.3,
+      "position": 8.3
+    },
+    {
+      "query": "bmi barn räknare",
+      "clicks": 15,
+      "impressions": 196,
+      "ctr": 7.7,
+      "position": 6.1
+    },
+    {
+      "query": "iso bmi",
+      "clicks": 14,
+      "impressions": 223,
+      "ctr": 6.3,
+      "position": 12.1
+    },
+    {
+      "query": "viktuppgång gravid kalkylator",
+      "clicks": 14,
+      "impressions": 40,
+      "ctr": 35.0,
+      "position": 2.3
+    },
+    {
+      "query": "isobmi barn",
+      "clicks": 11,
+      "impressions": 87,
+      "ctr": 12.6,
+      "position": 3.5
+    },
+    {
+      "query": "bmi kvinna ålder",
+      "clicks": 10,
+      "impressions": 479,
+      "ctr": 2.1,
+      "position": 10.5
+    },
+    {
+      "query": "bmi räknare kvinna ålder",
+      "clicks": 10,
+      "impressions": 396,
+      "ctr": 2.5,
+      "position": 11.1
+    },
+    {
+      "query": "bmi kvinna",
+      "clicks": 8,
+      "impressions": 288,
+      "ctr": 2.8,
+      "position": 15.3
+    },
+    {
+      "query": "iso bmi kalkylator",
+      "clicks": 8,
+      "impressions": 22,
+      "ctr": 36.4,
+      "position": 2
+    },
+    {
+      "query": "bmi barn räkna ut",
+      "clicks": 7,
+      "impressions": 185,
+      "ctr": 3.8,
+      "position": 8.3
+    },
+    {
+      "query": "bmi man 70 år",
+      "clicks": 7,
+      "impressions": 99,
+      "ctr": 7.1,
+      "position": 5.4
+    },
+    {
+      "query": "bmi kalkylator barn",
+      "clicks": 6,
+      "impressions": 119,
+      "ctr": 5.0,
+      "position": 8.0
+    },
+    {
+      "query": "bmi räknare med ålder",
+      "clicks": 6,
+      "impressions": 19,
+      "ctr": 31.6,
+      "position": 7.3
+    },
+    {
+      "query": "bmi äldre man",
+      "clicks": 6,
+      "impressions": 149,
+      "ctr": 4.0,
+      "position": 10.9
+    },
+    {
+      "query": "bmi-räknare man ålder",
+      "clicks": 6,
+      "impressions": 66,
+      "ctr": 9.1,
+      "position": 7.7
+    },
+    {
+      "query": "iso bmi räkna ut",
+      "clicks": 6,
+      "impressions": 17,
+      "ctr": 35.3,
+      "position": 5.3
+    },
+    {
+      "query": "räkna ut bmi barn",
+      "clicks": 6,
+      "impressions": 215,
+      "ctr": 2.8,
+      "position": 8.7
+    },
+    {
+      "query": "räkna ut iso bmi barn",
+      "clicks": 5,
+      "impressions": 8,
+      "ctr": 62.5,
+      "position": 2.4
+    },
+    {
+      "query": "bmi ålder",
+      "clicks": 4,
+      "impressions": 193,
+      "ctr": 2.1,
+      "position": 18.4
+    },
+    {
+      "query": "iso bmi calculator",
+      "clicks": 4,
+      "impressions": 36,
+      "ctr": 11.1,
+      "position": 3.9
+    },
+    {
+      "query": "beräkna iso bmi",
+      "clicks": 3,
+      "impressions": 7,
+      "ctr": 42.9,
+      "position": 2.7
+    },
+    {
+      "query": "bmi gravid",
+      "clicks": 3,
+      "impressions": 84,
+      "ctr": 3.6,
+      "position": 6.1
+    },
+    {
+      "query": "isobmi",
+      "clicks": 3,
+      "impressions": 86,
+      "ctr": 3.5,
+      "position": 10.0
+    },
+    {
+      "query": "barn bmi räknare",
+      "clicks": 2,
+      "impressions": 46,
+      "ctr": 4.3,
+      "position": 4.3
+    },
+    {
+      "query": "bmi kvinna 65 år",
+      "clicks": 2,
+      "impressions": 78,
+      "ctr": 2.6,
+      "position": 10.7
+    },
+    {
+      "query": "bmi man",
+      "clicks": 2,
+      "impressions": 111,
+      "ctr": 1.8,
+      "position": 28.8
+    },
+    {
+      "query": "bmi man 65 år",
+      "clicks": 2,
+      "impressions": 14,
+      "ctr": 14.3,
+      "position": 4.6
+    },
+    {
+      "query": "bmi räknare ålder",
+      "clicks": 2,
+      "impressions": 105,
+      "ctr": 1.9,
+      "position": 20.6
+    },
+    {
+      "query": "bmi uträkning barn",
+      "clicks": 2,
+      "impressions": 75,
+      "ctr": 2.7,
+      "position": 13.7
+    },
+    {
+      "query": "bmi-räknare barn",
+      "clicks": 2,
+      "impressions": 13,
+      "ctr": 15.4,
+      "position": 4.2
+    },
+    {
+      "query": "bmi-räknare ålder",
+      "clicks": 2,
+      "impressions": 81,
+      "ctr": 2.5,
+      "position": 7.2
+    },
+    {
+      "query": "iso-bmi",
+      "clicks": 2,
+      "impressions": 43,
+      "ctr": 4.7,
+      "position": 8.3
+    },
+    {
+      "query": "iso-bmi kalkylator",
+      "clicks": 2,
+      "impressions": 9,
+      "ctr": 22.2,
+      "position": 2
+    },
+    {
+      "query": "normalt bmi kvinna 60 är",
+      "clicks": 2,
+      "impressions": 111,
+      "ctr": 1.8,
+      "position": 6.5
+    },
+    {
+      "query": "normalt bmi kvinna 70 år",
+      "clicks": 2,
+      "impressions": 14,
+      "ctr": 14.3,
+      "position": 6
+    },
+    {
+      "query": "viktuppgång gravid vecka för vecka",
+      "clicks": 2,
+      "impressions": 13,
+      "ctr": 15.4,
+      "position": 12.2
+    },
+    {
+      "query": "alf-inge håland",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 100,
+      "position": 3
+    },
+    {
+      "query": "barn bmi räkna ut",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 7.1,
+      "position": 5.4
+    },
+    {
+      "query": "barn bmi test",
+      "clicks": 1,
+      "impressions": 39,
+      "ctr": 2.6,
+      "position": 10.1
+    },
+    {
+      "query": "bmi barn kalkylator",
+      "clicks": 1,
+      "impressions": 6,
+      "ctr": 16.7,
+      "position": 3.5
+    },
+    {
+      "query": "bmi calculator barn",
+      "clicks": 1,
+      "impressions": 100,
+      "ctr": 1.0,
+      "position": 6.5
+    },
+    {
+      "query": "bmi för äldre",
+      "clicks": 1,
+      "impressions": 82,
+      "ctr": 1.2,
+      "position": 14.8
+    },
+    {
+      "query": "bmi hos äldre",
+      "clicks": 1,
+      "impressions": 58,
+      "ctr": 1.7,
+      "position": 21.2
+    },
+    {
+      "query": "bmi kvinna 67 år",
+      "clicks": 1,
+      "impressions": 15,
+      "ctr": 6.7,
+      "position": 6.7
+    }
+  ],
+  "top_pages": [
+    {
+      "url": "https://bmi-raknare.se/bmi-barn/",
+      "clicks": 273,
+      "impressions": 7732,
+      "ctr": 3.5,
+      "position": 9.9
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-aldre/",
+      "clicks": 242,
+      "impressions": 5090,
+      "ctr": 4.8,
+      "position": 10.3
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-kvinna/",
+      "clicks": 151,
+      "impressions": 7449,
+      "ctr": 2.0,
+      "position": 15.4
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-gravid/",
+      "clicks": 96,
+      "impressions": 2148,
+      "ctr": 4.5,
+      "position": 9.3
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-man/",
+      "clicks": 11,
+      "impressions": 676,
+      "ctr": 1.6,
+      "position": 21.5
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-ozempic-krav/",
+      "clicks": 11,
+      "impressions": 1677,
+      "ctr": 0.7,
+      "position": 8.8
+    },
+    {
+      "url": "https://bmi-raknare.se/",
+      "clicks": 4,
+      "impressions": 2626,
+      "ctr": 0.2,
+      "position": 24.9
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-tabell/",
+      "clicks": 3,
+      "impressions": 432,
+      "ctr": 0.7,
+      "position": 33.5
+    },
+    {
+      "url": "https://bmi-raknare.se/bmi-formel/",
+      "clicks": 1,
+      "impressions": 110,
+      "ctr": 0.9,
+      "position": 40.8
+    },
+    {
+      "url": "https://bmi-raknare.se/idealvikt/",
+      "clicks": 1,
+      "impressions": 266,
+      "ctr": 0.4,
+      "position": 12.4
+    },
+    {
+      "url": "https://bmi-raknare.se/kalorier/",
+      "clicks": 1,
+      "impressions": 83,
+      "ctr": 1.2,
+      "position": 12.8
+    }
+  ],
+  "page_drilldown": {
+    "https://bmi-raknare.se/bmi-barn/": [
+      {
+        "query": "räkna ut iso-bmi barn",
+        "clicks": 51,
+        "impressions": 111,
+        "ctr": 45.9,
+        "position": 2.2
+      },
+      {
+        "query": "iso bmi barn",
+        "clicks": 26,
+        "impressions": 170,
+        "ctr": 15.3,
+        "position": 4.1
+      },
+      {
+        "query": "bmi barn",
+        "clicks": 24,
+        "impressions": 1139,
+        "ctr": 2.1,
+        "position": 8.2
+      },
+      {
+        "query": "bmi räknare barn",
+        "clicks": 16,
+        "impressions": 295,
+        "ctr": 5.4,
+        "position": 3.9
+      },
+      {
+        "query": "bmi barn räknare",
+        "clicks": 15,
+        "impressions": 171,
+        "ctr": 8.8,
+        "position": 3.7
+      }
+    ],
+    "https://bmi-raknare.se/bmi-aldre/": [
+      {
+        "query": "bmi äldre kvinna",
+        "clicks": 63,
+        "impressions": 616,
+        "ctr": 10.2,
+        "position": 4.0
+      },
+      {
+        "query": "bmi kvinna 70 år",
+        "clicks": 19,
+        "impressions": 172,
+        "ctr": 11.0,
+        "position": 6.2
+      },
+      {
+        "query": "bmi man 70 år",
+        "clicks": 7,
+        "impressions": 99,
+        "ctr": 7.1,
+        "position": 5.4
+      },
+      {
+        "query": "bmi-räknare kvinna ålder",
+        "clicks": 7,
+        "impressions": 58,
+        "ctr": 12.1,
+        "position": 6.1
+      },
+      {
+        "query": "bmi kvinna",
+        "clicks": 6,
+        "impressions": 117,
+        "ctr": 5.1,
+        "position": 15.8
+      }
+    ],
+    "https://bmi-raknare.se/bmi-kvinna/": [
+      {
+        "query": "bmi-räknare kvinna ålder",
+        "clicks": 93,
+        "impressions": 2838,
+        "ctr": 3.3,
+        "position": 7.2
+      },
+      {
+        "query": "bmi kvinna ålder",
+        "clicks": 10,
+        "impressions": 407,
+        "ctr": 2.5,
+        "position": 9.6
+      },
+      {
+        "query": "bmi räknare kvinna ålder",
+        "clicks": 10,
+        "impressions": 352,
+        "ctr": 2.8,
+        "position": 7.2
+      },
+      {
+        "query": "bmi räknare med ålder",
+        "clicks": 6,
+        "impressions": 19,
+        "ctr": 31.6,
+        "position": 7.3
+      },
+      {
+        "query": "bmi ålder",
+        "clicks": 4,
+        "impressions": 148,
+        "ctr": 2.7,
+        "position": 12.4
+      }
+    ],
+    "https://bmi-raknare.se/bmi-gravid/": [
+      {
+        "query": "viktuppgång gravid kalkylator",
+        "clicks": 14,
+        "impressions": 40,
+        "ctr": 35.0,
+        "position": 2.3
+      },
+      {
+        "query": "bmi gravid",
+        "clicks": 3,
+        "impressions": 84,
+        "ctr": 3.6,
+        "position": 6.1
+      },
+      {
+        "query": "viktuppgång gravid vecka för vecka",
+        "clicks": 2,
+        "impressions": 13,
+        "ctr": 15.4,
+        "position": 12.2
+      },
+      {
+        "query": "gravid bmi",
+        "clicks": 1,
+        "impressions": 14,
+        "ctr": 7.1,
+        "position": 12.5
+      },
+      {
+        "query": "hur mycket går man upp i vikt gravid",
+        "clicks": 1,
+        "impressions": 12,
+        "ctr": 8.3,
+        "position": 11.9
+      }
+    ],
+    "https://bmi-raknare.se/bmi-man/": [
+      {
+        "query": "bmi-räknare man ålder",
+        "clicks": 6,
+        "impressions": 66,
+        "ctr": 9.1,
+        "position": 7.7
+      },
+      {
+        "query": "bmi räknare man ålder",
+        "clicks": 1,
+        "impressions": 23,
+        "ctr": 4.3,
+        "position": 8.4
+      },
+      {
+        "query": "bmi-räknare 1177",
+        "clicks": 1,
+        "impressions": 2,
+        "ctr": 50.0,
+        "position": 16
+      },
+      {
+        "query": "räkna ut bmi man",
+        "clicks": 1,
+        "impressions": 4,
+        "ctr": 25.0,
+        "position": 27.2
+      },
+      {
+        "query": "1177 bmi",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      }
+    ],
+    "https://bmi-raknare.se/bmi-ozempic-krav/": [
+      {
+        "query": "bmi ozempic",
+        "clicks": 1,
+        "impressions": 57,
+        "ctr": 1.8,
+        "position": 9.4
+      },
+      {
+        "query": "vilket bmi för ozempic",
+        "clicks": 1,
+        "impressions": 23,
+        "ctr": 4.3,
+        "position": 4.0
+      },
+      {
+        "query": "bmi 26 ozempic",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 8
+      },
+      {
+        "query": "bmi 27 ozempic",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "bmi för att få ozempic",
+        "clicks": 0,
+        "impressions": 52,
+        "ctr": 0,
+        "position": 5.8
+      }
+    ],
+    "https://bmi-raknare.se/": [
+      {
+        "query": "bmi räknare",
+        "clicks": 1,
+        "impressions": 942,
+        "ctr": 0.1,
+        "position": 13.3
+      },
+      {
+        "query": "bmi uträkning",
+        "clicks": 1,
+        "impressions": 30,
+        "ctr": 3.3,
+        "position": 40.9
+      },
+      {
+        "query": "bmi-räknare 1177",
+        "clicks": 1,
+        "impressions": 248,
+        "ctr": 0.4,
+        "position": 8.2
+      },
+      {
+        "query": "barn bmi räknare",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 20
+      },
+      {
+        "query": "barn bmi test",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 36.8
+      }
+    ],
+    "https://bmi-raknare.se/bmi-tabell/": [
+      {
+        "query": "21.9 bmi",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
+      },
+      {
+        "query": "bmi 14",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 72.5
+      },
+      {
+        "query": "bmi 14.5",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 7
+      },
+      {
+        "query": "bmi 16",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr": 0,
+        "position": 75
+      },
+      {
+        "query": "bmi 16 år",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 56
+      }
+    ],
+    "https://bmi-raknare.se/bmi-formel/": [
+      {
+        "query": "bmi ekvation",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8.5
+      },
+      {
+        "query": "bmi formel",
+        "clicks": 0,
+        "impressions": 46,
+        "ctr": 0,
+        "position": 44.0
+      },
+      {
+        "query": "bmi räkna ut formel",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 60.2
+      },
+      {
+        "query": "bmi uträkning hur",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 100
+      },
+      {
+        "query": "formel bmi",
+        "clicks": 0,
+        "impressions": 21,
+        "ctr": 0,
+        "position": 48.4
+      }
+    ],
+    "https://bmi-raknare.se/idealvikt/": [
+      {
+        "query": "bmi idealvikt",
+        "clicks": 0,
+        "impressions": 16,
+        "ctr": 0,
+        "position": 20.2
+      },
+      {
+        "query": "ideal vikt",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 37.5
+      },
+      {
+        "query": "idealvikt",
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "position": 14.3
+      },
+      {
+        "query": "idealvikt kvinna",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 33.1
+      },
+      {
+        "query": "optimal vikt",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 62.2
+      }
+    ],
+    "https://bmi-raknare.se/kalorier/": [
+      {
+        "query": "basalmetabolism räkna ut",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 38
+      },
+      {
+        "query": "bmi tdee",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 3
+      },
+      {
+        "query": "kalori tdee",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      },
+      {
+        "query": "kaloribehov räknare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 74
+      },
+      {
+        "query": "kaloriberäknare",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 71
+      }
+    ]
+  },
+  "low_hanging_fruit": [
+    {
+      "query": "bmi-räknare kvinna ålder",
+      "clicks": 100,
+      "impressions": 2851,
+      "ctr": 3.5,
+      "position": 7.2,
+      "potential": 63.3
+    },
+    {
+      "query": "bmi äldre kvinna",
+      "clicks": 63,
+      "impressions": 643,
+      "ctr": 9.8,
+      "position": 4.8,
+      "potential": 34.5
+    },
+    {
+      "query": "bmi barn",
+      "clicks": 24,
+      "impressions": 1139,
+      "ctr": 2.1,
+      "position": 8.2,
+      "potential": 19.3
+    },
+    {
+      "query": "iso bmi barn",
+      "clicks": 26,
+      "impressions": 171,
+      "ctr": 15.2,
+      "position": 4.3,
+      "potential": 11.9
+    },
+    {
+      "query": "bmi barn räknare",
+      "clicks": 15,
+      "impressions": 196,
+      "ctr": 7.7,
+      "position": 6.1,
+      "potential": 6.3
+    },
+    {
+      "query": "bmi räknare barn",
+      "clicks": 16,
+      "impressions": 372,
+      "ctr": 4.3,
+      "position": 8.3,
+      "potential": 6.2
+    },
+    {
+      "query": "bmi räknare",
+      "clicks": 1,
+      "impressions": 984,
+      "ctr": 0.1,
+      "position": 13.8,
+      "potential": 5.5
+    },
+    {
+      "query": "bmi kvinna 70 år",
+      "clicks": 20,
+      "impressions": 172,
+      "ctr": 11.6,
+      "position": 6.2,
+      "potential": 5.4
+    },
+    {
+      "query": "bmi kvinna ålder",
+      "clicks": 10,
+      "impressions": 479,
+      "ctr": 2.1,
+      "position": 10.5,
+      "potential": 4.8
+    },
+    {
+      "query": "bmi man 70 år",
+      "clicks": 7,
+      "impressions": 99,
+      "ctr": 7.1,
+      "position": 5.4,
+      "potential": 4.2
+    },
+    {
+      "query": "bmi-räknare 1177",
+      "clicks": 1,
+      "impressions": 248,
+      "ctr": 0.4,
+      "position": 8.2,
+      "potential": 4.2
+    },
+    {
+      "query": "bmi räknare kvinna ålder",
+      "clicks": 10,
+      "impressions": 396,
+      "ctr": 2.5,
+      "position": 11.1,
+      "potential": 3.5
+    },
+    {
+      "query": "räkna ut bmi barn",
+      "clicks": 6,
+      "impressions": 215,
+      "ctr": 2.8,
+      "position": 8.7,
+      "potential": 3.2
+    },
+    {
+      "query": "barn bmi räknare",
+      "clicks": 2,
+      "impressions": 46,
+      "ctr": 4.3,
+      "position": 4.3,
+      "potential": 3.2
+    },
+    {
+      "query": "normalt bmi kvinna 60 är",
+      "clicks": 2,
+      "impressions": 111,
+      "ctr": 1.8,
+      "position": 6.5,
+      "potential": 3.1
+    },
+    {
+      "query": "bmi barn räkna ut",
+      "clicks": 7,
+      "impressions": 185,
+      "ctr": 3.8,
+      "position": 8.3,
+      "potential": 3.0
+    },
+    {
+      "query": "bmi calculator barn",
+      "clicks": 1,
+      "impressions": 100,
+      "ctr": 1.0,
+      "position": 6.5,
+      "potential": 2.8
+    },
+    {
+      "query": "bmi gravid",
+      "clicks": 3,
+      "impressions": 84,
+      "ctr": 3.6,
+      "position": 6.1,
+      "potential": 2.7
+    },
+    {
+      "query": "bmi ungdom",
+      "clicks": 1,
+      "impressions": 118,
+      "ctr": 0.8,
+      "position": 7.1,
+      "potential": 2.7
+    },
+    {
+      "query": "bmi kalkylator barn",
+      "clicks": 6,
+      "impressions": 119,
+      "ctr": 5.0,
+      "position": 8.0,
+      "potential": 2.1
+    }
+  ],
+  "categories": {
+    "bmi räknare": {
+      "clicks": 42,
+      "impressions": 850,
+      "ctr": 4.9,
+      "pos": 9.6,
+      "n_queries": 8
+    },
+    "bmi kvinna": {
+      "clicks": 218,
+      "impressions": 5047,
+      "ctr": 4.3,
+      "pos": 8.5,
+      "n_queries": 10
+    },
+    "bmi man": {
+      "clicks": 11,
+      "impressions": 224,
+      "ctr": 4.9,
+      "pos": 12.9,
+      "n_queries": 3
+    },
+    "bmi barn": {
+      "clicks": 189,
+      "impressions": 2574,
+      "ctr": 7.3,
+      "pos": 5.4,
+      "n_queries": 19
+    },
+    "bmi gravid": {
+      "clicks": 19,
+      "impressions": 137,
+      "ctr": 13.9,
+      "pos": 6.9,
+      "n_queries": 3
+    },
+    "bmi äldre": {
+      "clicks": 8,
+      "impressions": 289,
+      "ctr": 2.8,
+      "pos": 15.7,
+      "n_queries": 3
+    },
+    "ozempic": {
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "pos": 0,
+      "n_queries": 0
+    },
+    "idealvikt": {
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "pos": 0,
+      "n_queries": 0
+    },
+    "kalorier": {
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "pos": 0,
+      "n_queries": 0
+    },
+    "annat": {
+      "clicks": 9,
+      "impressions": 380,
+      "ctr": 2.4,
+      "pos": 9.5,
+      "n_queries": 4
+    }
+  },
+  "devices": {
+    "MOBILE": {
+      "clicks": 659,
+      "impressions": 18500,
+      "ctr": 3.6,
+      "pos": 8.9
+    },
+    "DESKTOP": {
+      "clicks": 117,
+      "impressions": 8998,
+      "ctr": 1.3,
+      "pos": 22.3
+    },
+    "TABLET": {
+      "clicks": 16,
+      "impressions": 343,
+      "ctr": 4.7,
+      "pos": 6.9
+    }
+  },
+  "countries": {
+    "swe": {
+      "clicks": 775,
+      "impressions": 26346,
+      "ctr": 2.9,
+      "pos": 13.0
+    },
+    "fin": {
+      "clicks": 5,
+      "impressions": 213,
+      "ctr": 2.3,
+      "pos": 9.2
+    },
+    "ala": {
+      "clicks": 3,
+      "impressions": 39,
+      "ctr": 7.7,
+      "pos": 7.7
+    },
+    "esp": {
+      "clicks": 2,
+      "impressions": 115,
+      "ctr": 1.7,
+      "pos": 8.0
+    },
+    "ita": {
+      "clicks": 2,
+      "impressions": 27,
+      "ctr": 7.4,
+      "pos": 9.6
+    },
+    "arm": {
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 50.0,
+      "pos": 5.5
+    },
+    "che": {
+      "clicks": 1,
+      "impressions": 13,
+      "ctr": 7.7,
+      "pos": 8.4
+    },
+    "fra": {
+      "clicks": 1,
+      "impressions": 17,
+      "ctr": 5.9,
+      "pos": 7.4
+    },
+    "nor": {
+      "clicks": 1,
+      "impressions": 37,
+      "ctr": 2.7,
+      "pos": 20.6
+    },
+    "srb": {
+      "clicks": 1,
+      "impressions": 10,
+      "ctr": 10.0,
+      "pos": 6.2
+    },
+    "alb": {
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "pos": 8.7
+    },
+    "are": {
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "pos": 28.2
+    },
+    "arg": {
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "pos": 20.2
+    },
+    "aus": {
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "pos": 11
+    },
+    "aut": {
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "pos": 11.5
+    }
+  },
+  "monthly_trend": [
+    {
+      "month": "2026-05",
+      "current_clicks": 0,
+      "current_impressions": 0,
+      "current_ctr": 0,
+      "current_pos": 0,
+      "current_days": 0,
+      "prev_clicks": 597,
+      "prev_impressions": 16226
+    },
+    {
+      "month": "2026-06",
+      "current_clicks": 452,
+      "current_impressions": 15674,
+      "current_ctr": 2.9,
+      "current_pos": 14.2,
+      "current_days": 18,
+      "prev_clicks": 311,
+      "prev_impressions": 9356
+    },
+    {
+      "month": "2026-07",
+      "current_clicks": 340,
+      "current_impressions": 12167,
+      "current_ctr": 2.8,
+      "current_pos": 11.9,
+      "current_days": 10,
+      "prev_clicks": 0,
+      "prev_impressions": 0
+    }
+  ],
+  "wow_comparison": {
+    "clicks_change": -12.8,
+    "impr_change": 8.8,
+    "ctr_change": -0.7,
+    "prev_clicks": 908,
+    "prev_impr": 25582,
+    "prev_ctr": 3.5,
+    "cur_clicks": 792,
+    "cur_impr": 27841,
+    "cur_ctr": 2.8
+  },
+  "alerts": [
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/bmi-man/",
+      "detail": "CTR=1.6% avec 676 impressions, position 21.5",
+      "metrics": {
+        "impressions": 676,
+        "clicks": 11,
+        "ctr": 1.6,
+        "position": 21.5
+      }
+    },
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/bmi-ozempic-krav/",
+      "detail": "CTR=0.7% avec 1677 impressions, position 8.8",
+      "metrics": {
+        "impressions": 1677,
+        "clicks": 11,
+        "ctr": 0.7,
+        "position": 8.8
+      }
+    },
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/",
+      "detail": "CTR=0.2% avec 2626 impressions, position 24.9",
+      "metrics": {
+        "impressions": 2626,
+        "clicks": 4,
+        "ctr": 0.2,
+        "position": 24.9
+      }
+    },
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/bmi-tabell/",
+      "detail": "CTR=0.7% avec 432 impressions, position 33.5",
+      "metrics": {
+        "impressions": 432,
+        "clicks": 3,
+        "ctr": 0.7,
+        "position": 33.5
+      }
+    },
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/bmi-formel/",
+      "detail": "CTR=0.9% avec 110 impressions, position 40.8",
+      "metrics": {
+        "impressions": 110,
+        "clicks": 1,
+        "ctr": 0.9,
+        "position": 40.8
+      }
+    },
+    {
+      "type": "low_ctr",
+      "severity": "warning",
+      "page": "https://bmi-raknare.se/idealvikt/",
+      "detail": "CTR=0.4% avec 266 impressions, position 12.4",
+      "metrics": {
+        "impressions": 266,
+        "clicks": 1,
+        "ctr": 0.4,
+        "position": 12.4
+      }
+    },
+    {
+      "type": "query_low_ctr",
+      "severity": "warning",
+      "query": "bmi man",
+      "detail": "Requête « bmi man »: CTR=1.8% avec 111 impr, pos 28.8",
+      "metrics": {
+        "impressions": 111,
+        "clicks": 2,
+        "ctr": 1.8,
+        "position": 28.8
+      }
+    },
+    {
+      "type": "query_low_ctr",
+      "severity": "warning",
+      "query": "bmi räknare ålder",
+      "detail": "Requête « bmi räknare ålder »: CTR=1.9% avec 105 impr, pos 20.6",
+      "metrics": {
+        "impressions": 105,
+        "clicks": 2,
+        "ctr": 1.9,
+        "position": 20.6
+      }
+    },
+    {
+      "type": "query_low_ctr",
+      "severity": "warning",
+      "query": "normalt bmi kvinna 60 är",
+      "detail": "Requête « normalt bmi kvinna 60 är »: CTR=1.8% avec 111 impr, pos 6.5",
+      "metrics": {
+        "impressions": 111,
+        "clicks": 2,
+        "ctr": 1.8,
+        "position": 6.5
+      }
+    },
+    {
+      "type": "query_low_ctr",
+      "severity": "warning",
+      "query": "bmi calculator barn",
+      "detail": "Requête « bmi calculator barn »: CTR=1.0% avec 100 impr, pos 6.5",
+      "metrics": {
+        "impressions": 100,
+        "clicks": 1,
+        "ctr": 1.0,
+        "position": 6.5
+      }
+    }
+  ],
+  "totals": {
+    "current_30d": {
+      "clicks": 792,
+      "impressions": 27841,
+      "ctr": 2.8
+    },
+    "previous_30d": {
+      "clicks": 908,
+      "impressions": 25582,
+      "ctr": 3.5
+    }
+  }
+}

@@ -4,3 +4,4 @@ cache/
 composer.lock.zip
 .DS_Store
 *.log
+credentials/
