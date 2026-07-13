@@ -98,6 +98,17 @@ return function (App $app) {
         return $view->render($response, 'pages/kontakt.twig');
     });
 
+    // About & Terms Pages (required for AdSense approval)
+    $app->get('/om-oss/', function (Request $request, Response $response, $args) {
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'pages/om-oss.twig');
+    });
+
+    $app->get('/anvandarvillkor/', function (Request $request, Response $response, $args) {
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'pages/anvandarvillkor.twig');
+    });
+
     // Sitemap
     $app->get('/sitemap.xml', function (Request $request, Response $response, $args) {
         $baseUrl = 'https://bmi-raknare.se';
@@ -117,6 +128,8 @@ return function (App $app) {
             ['url' => '/bmi-tabell/', 'priority' => '0.7', 'changefreq' => 'yearly'],
             ['url' => '/integritetspolicy/', 'priority' => '0.3', 'changefreq' => 'yearly'],
             ['url' => '/kontakt/', 'priority' => '0.3', 'changefreq' => 'yearly'],
+            ['url' => '/om-oss/', 'priority' => '0.5', 'changefreq' => 'monthly'],
+            ['url' => '/anvandarvillkor/', 'priority' => '0.3', 'changefreq' => 'yearly'],
         ];
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';

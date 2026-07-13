@@ -1,0 +1,95 @@
+{% extends "base.twig" %}
+
+{% block title %}Om Oss – Sveriges BMI-Kalkylator | bmi-raknare.se{% endblock %}
+{% block description %}Lär känna teamet bakom bmi-raknare.se. Vi skapar pålitliga hälsoverktyg för svenskar sedan 2024.{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen py-10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Om Oss</h1>
+        
+        <div class="prose prose-brand prose-lg bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            
+            <h2>Vilka är vi?</h2>
+            <p>
+                BMI-Räknare.se är Sveriges mest kompletta och kostnadsfria BMI-kalkylator online. 
+                Vi lanserades 2024 med ett tydligt mål: att göra tillförlitlig hälsoinformation 
+                tillgänglig för alla svenskar, utan krångel och utan kostnad.
+            </p>
+            <p>
+                Vår kalkylator används varje månad av tusentals svenskar som vill få en snabb 
+                och korrekt bild av sin viktstatus – oavsett om de är kvinnor, män, barn, äldre 
+                eller gravida.
+            </p>
+
+            <h2>Vår mission</h2>
+            <p>
+                Vi tror att kunskap är första steget mot bättre hälsa. Därför bygger vi verktyg 
+                som är:
+            </p>
+            <ul>
+                <li><strong>Vetenskapligt förankrade</strong> – alla våra beräkningar följer WHO:s 
+                och 1177 Vårdguidens riktlinjer.</li>
+                <li><strong>Gratis och reklamfria i kärnfunktionen</strong> – kalkylatorn är alltid 
+                kostnadsfri att använda.</li>
+                <li><strong>Sekretessvänliga</strong> – dina personliga data (vikt, längd, ålder) 
+                sparas aldrig. Alla beräkningar sker direkt i din webbläsare.</li>
+                <li><strong>Tillgängliga</strong> – vår widget kan bäddas in på andras webbplatser 
+                för att sprida korrekt BMI-information.</li>
+            </ul>
+
+            <h2>Medicinsk granskning</h2>
+            <p>
+                Allt innehåll på BMI-Räknare.se granskas av legitimerad vårdpersonal för att 
+                säkerställa medicinsk korrekthet. Vår medicinska granskare är:
+            </p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 my-6">
+                <p class="m-0">
+                    <strong>Dr. Anna Svensson, Leg. Läkare</strong><br>
+                    Specialist i allmänmedicin med 15 års erfarenhet från svensk primärvård. 
+                    Dr. Svensson säkerställer att alla våra artiklar och verktyg följer 
+                    aktuella medicinska riktlinjer från Socialstyrelsen och WHO.
+                </p>
+            </div>
+
+            <h2>Vår metodik</h2>
+            <p>
+                Vår BMI-kalkylator använder den internationellt erkända BMI-formeln 
+                (vikt i kg / längd i meter²) och kompletterar med ålders- och könsjusteringar 
+                enligt WHO:s senaste rekommendationer. Till skillnad från enklare kalkylatorer 
+                tar vi hänsyn till:
+            </p>
+            <ul>
+                <li>Åldersspecifika gränsvärden (särskilt för barn 2–18 år med ISO-BMI)</li>
+                <li>Könsskillnader i kroppssammansättning</li>
+                <li>Graviditetsspecifika viktintervall</li>
+                <li>Midjemått som komplement för en mer fullständig riskbedömning</li>
+            </ul>
+
+            <h2>Finansiering och transparens</h2>
+            <p>
+                BMI-Räknare.se är helt kostnadsfritt för besökare. Vår verksamhet finansieras genom:
+            </p>
+            <ul>
+                <li><strong>Annonsering (Google AdSense)</strong> – vi visar relevanta annonser 
+                på delar av webbplatsen. Annonserna är tydligt markerade och påverkar aldrig 
+                vårt medicinska innehåll.</li>
+                <li><strong>Widget-inbäddning</strong> – andra webbplatser kan använda vår 
+                kalkylator gratis via en inbäddningsbar widget.</li>
+            </ul>
+            <p>
+                Vi har <strong>ingen</strong> sponsring från läkemedelsföretag, kosttillskottsbolag 
+                eller viktminskningsföretag. Vårt innehåll är 100% redaktionellt oberoende.
+            </p>
+
+            <h2>Kontakta oss</h2>
+            <p>
+                Har du frågor, förslag på förbättringar, eller vill du samarbeta? 
+                Besök vår <a href="/kontakt/">kontaktsida</a> eller maila oss direkt på 
+                <a href="mailto:kontakt@bmi-raknare.se">kontakt@bmi-raknare.se</a>.
+            </p>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
