@@ -1,0 +1,228 @@
+{% extends "base.twig" %}
+
+{% set current_month = "now"|date("F") %}
+{% set current_year = "now"|date("Y") %}
+{% set swedish_months = {
+	'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
+	'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
+	'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
+} %}
+{% set month_sv = swedish_months[current_month] %}
+
+{% block title %}ISO-BMI Kalkylator – Räkna ut ISO-BMI ({{ month_sv }} {{ current_year }}){% endblock %}
+{% block description %}Vad är ISO-BMI och hur räknar du ut det? Använd vår kostnadsfria ISO-BMI kalkylator och se hur barns BMI översätts till vuxenvärden enligt IOTF. 100% gratis.{% endblock %}
+{% block canonical %}
+	{{ base_url }}/iso-bmi/
+{% endblock %}
+
+{% block schema %}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "MedicalWebPage",
+			"name": "ISO-BMI Kalkylator",
+			"description": "Information om ISO-BMI: vad det är, hur det räknas ut och hur det skiljer sig från vanligt BMI.",
+			"url": "{{ base_url }}/iso-bmi/",
+			"dateModified": "{{ "now"|date("Y-m-d") }}",
+			"inLanguage": "sv-SE",
+			"isPartOf": {
+				"@type": "WebSite",
+				"name": "BMI-Räknare.se",
+				"url": "{{ base_url }}/"
+			},
+			"about": {
+				"@type": "MedicalCondition",
+				"name": "Body Mass Index (BMI)"
+			}
+		}
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "ISO-BMI Kalkylator",
+			"url": "{{ base_url }}/iso-bmi/",
+			"applicationCategory": "HealthApplication",
+			"operatingSystem": "All",
+			"offers": { "@type": "Offer", "price": "0", "priceCurrency": "SEK" },
+			"description": "Kostnadsfri kalkylator som räknar ut ISO-BMI enligt IOTF:s åldersanpassade gränsvärden."
+		}
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Hem", "item": "{{ base_url }}/" },
+				{ "@type": "ListItem", "position": 2, "name": "ISO-BMI", "item": "{{ base_url }}/iso-bmi/" }
+			]
+		}
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "Vad är ISO-BMI?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "ISO-BMI är ett ålders- och könsanpassat BMI som översätter ett barns BMI till motsvarande vuxenvärde. Det utvecklades av International Obesity Task Force (IOTF) så att övervikt och fetma kan bedömas på samma skala som för vuxna."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Hur räknar man ut ISO-BMI?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Du räknar först ut barnets vanliga BMI (vikt delat med längd i meter i kvadrat) och jämför det sedan med IOTF:s gränsvärden för barnets exakta ålder och kön. Vår kalkylator gör detta automatiskt när åldern är under 18 år."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Vad är skillnaden mellan ISO-BMI och vanligt BMI?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Vanligt BMI använder fasta gränsvärden (18,5–25) som gäller vuxna. ISO-BMI justerar gränserna efter ålder och kön eftersom barns kroppssammansättning förändras under uppväxten. ISO-BMI 25 motsvarar övervikt och ISO-BMI 30 motsvarar fetma."
+					}
+				}
+			]
+		}
+	</script>
+{% endblock %}
+
+{% block content %}
+	<div class="bg-gray-50 min-h-screen">
+
+		<!-- Header / Breadcrumb -->
+		<div class="bg-gradient-to-r from-teal-50 to-emerald-50 border-b border-teal-100">
+			<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+				<nav class="flex text-sm text-gray-500 mb-4" aria-label="Breadcrumb">
+					<a href="/" class="hover:text-brand-600">Hem</a>
+					<span class="mx-2">/</span>
+					<span class="font-medium text-gray-900">ISO-BMI</span>
+				</nav>
+				<div class="flex items-center space-x-3">
+					<span class="w-3 h-3 rounded-full bg-teal-500"></span>
+					<h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+						ISO-BMI Kalkylator – Räkna ut ISO-BMI
+					</h1>
+				</div>
+				<p class="mt-3 text-lg text-gray-600 max-w-3xl">
+					ISO-BMI översätter ett barns BMI till motsvarande vuxenvärde enligt IOTF. Räkna ut det direkt nedan.
+				</p>
+			</div>
+		</div>
+
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+				<!-- Main Content -->
+				<div class="lg:col-span-2">
+
+					<!-- Direct Answer (snippet-optimerad) -->
+					<div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-8">
+						<h2 class="text-lg font-bold text-gray-900 mb-2">Vad är ISO-BMI?</h2>
+						<p class="text-gray-700 leading-relaxed">
+							<strong>ISO-BMI</strong> är ett ålders- och könsanpassat BMI som översätter ett barns BMI till
+							motsvarande vuxenvärde. Det utvecklades av <strong>International Obesity Task Force (IOTF)</strong>
+							så att övervikt och fetma kan bedömas på samma skala som för vuxna: ISO-BMI 25 motsvarar övervikt
+							och ISO-BMI 30 motsvarar fetma.
+						</p>
+					</div>
+
+					<!-- Calculator Card -->
+					<div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-12">
+						<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+							<h2 class="text-xl font-bold text-gray-900">Räkna ut ISO-BMI här</h2>
+							<div class="flex items-center mt-2 sm:mt-0 text-xs text-gray-500">
+								<svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+								</svg>
+								IOTF-gränsvärden
+							</div>
+						</div>
+						<p class="text-sm text-gray-500 mb-2">Ange en ålder under 18 år så tillämpas ISO-BMI (IOTF) automatiskt.</p>
+						{% include 'components/calculator.twig' with {'female_color': 'teal', 'male_color': 'emerald'} %}
+
+						{% include 'components/medical-review.twig' %}
+					</div>
+
+					<!-- Callout: barn-specifik sida (anti-cannibalisering) -->
+					<div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-8 flex items-start">
+						<svg class="h-6 w-6 text-emerald-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+						<p class="text-emerald-900 text-sm m-0">
+							Söker du specifikt efter BMI för barn med tillväxtkurvor och åldersuppdelade tabeller?
+							Gå till vår dedikerade sida <a href="/bmi-barn/" class="font-semibold underline">BMI för barn (ISO-BMI)</a>.
+						</p>
+					</div>
+
+					<!-- Article -->
+					<div class="prose prose-brand prose-lg text-gray-600 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+						<h2>Så räknar du ut ISO-BMI</h2>
+						<p>
+							Du räknar först ut det vanliga BMI-värdet – vikt i kilo delat med längden i meter i kvadrat
+							(kg/m²). Därefter jämförs värdet med IOTF:s gränsvärden för barnets <strong>exakta ålder och kön</strong>.
+							Eftersom barn växer olika snabbt går det inte att använda vuxnas fasta gränser (18,5–25); ett BMI på
+							till exempel 19 kan vara helt normalt för ett barn men innebära övervikt för ett annat.
+						</p>
+
+						<h2>ISO-BMI jämfört med vanligt BMI</h2>
+						<div class="not-prose my-6">
+							<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+								<table class="min-w-full divide-y divide-gray-300">
+									<thead class="bg-teal-50">
+										<tr>
+											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Klassificering</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">ISO-BMI (barn)</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Motsvarar vuxen-BMI</th>
+										</tr>
+									</thead>
+									<tbody class="divide-y divide-gray-200 bg-white">
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Normalvikt</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-green-700 font-semibold">under 25</td>
+											<td class="px-3 py-4 text-sm text-gray-500">18,5 – 25</td>
+										</tr>
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Övervikt</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-orange-600 font-semibold">ISO-BMI 25</td>
+											<td class="px-3 py-4 text-sm text-gray-500">25</td>
+										</tr>
+										<tr>
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">Fetma</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-red-600 font-semibold">ISO-BMI 30</td>
+											<td class="px-3 py-4 text-sm text-gray-500">30</td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="text-xs text-gray-500 p-2 bg-gray-50">* Gränsvärden enligt ISO-BMI (IOTF-25/30).</p>
+							</div>
+						</div>
+
+						<h2>Varför används ISO-BMI för barn?</h2>
+						<p>
+							Barnhälsovården (BVC) och Rikshandboken följer barns vikt med tillväxtkurvor. ISO-BMI kompletterar
+							kurvorna genom att uttrycka barnets viktstatus i vuxenvärden, vilket gör resultatet lättare att förstå
+							för föräldrar. Ett enskilt värde säger dock mindre än utvecklingen över tid – kontakta alltid BVC eller
+							din vårdcentral om du är orolig för ditt barns vikt.
+						</p>
+
+						<p>
+							Läs mer om åldersuppdelade tabeller och tillväxtkurvor på vår sida
+							<a href="/bmi-barn/">BMI för barn</a>, eller se
+							<a href="/bmi-formel/">hur BMI räknas ut steg för steg</a>.
+						</p>
+					</div>
+				</div>
+
+				<!-- Sidebar -->
+				{% include 'components/sidebar.twig' %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
