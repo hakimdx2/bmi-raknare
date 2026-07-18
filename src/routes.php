@@ -112,7 +112,8 @@ return function (App $app) {
     // Sitemap
     $app->get('/sitemap.xml', function (Request $request, Response $response, $args) {
         $baseUrl = 'https://bmi-raknare.se';
-        $today = date('Y-m-d');
+        // Static date: only bump when content actually changes (fake freshness hurts trust)
+        $lastmod = '2026-07-15';
         
         $pages = [
             ['url' => '/', 'priority' => '1.0', 'changefreq' => 'weekly'],
@@ -138,7 +139,7 @@ return function (App $app) {
         foreach ($pages as $page) {
             $xml .= '<url>';
             $xml .= '<loc>' . $baseUrl . $page['url'] . '</loc>';
-            $xml .= '<lastmod>' . $today . '</lastmod>';
+            $xml .= '<lastmod>' . $lastmod . '</lastmod>';
             $xml .= '<changefreq>' . $page['changefreq'] . '</changefreq>';
             $xml .= '<priority>' . $page['priority'] . '</priority>';
             $xml .= '</url>';

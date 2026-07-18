@@ -1,18 +1,10 @@
 {% extends "base.twig" %}
 
-{% set current_month = "now"|date("F") %}
-{% set current_year = "now"|date("Y") %}
-{% set swedish_months = {
-    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
-    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
-    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
-} %}
-{% set month_sv = swedish_months[current_month] %}
 
 {% set segment_data = {
     'kvinna': {
         'color': 'pink',
-        'title': 'BMI Räknare Kvinna & Ålder: Kalkylator & Tabell (' ~ month_sv ~ ' ' ~ current_year ~ ')',
+        'title': 'BMI Räknare Kvinna & Ålder: Kalkylator & Tabell (2026)',
         'description': 'Räkna ut BMI för kvinna baserat på din ålder. Vår kalkylator och tabell visar normalvärden för kvinnor 40, 50, 60 och 70+ år. 100% Gratis.',
         'h1': 'BMI Räknare Kvinna: Räkna ut BMI efter ålder',
         'intro': 'Kvinnor har naturligt en något högre fettprocent än män. Vår kalkylator tar hänsyn till din ålder för att ge dig ett korrekt BMI-värde.',
@@ -20,7 +12,7 @@
     },
     'man': {
         'color': 'blue',
-        'title': 'BMI Räknare Man & Ålder: Kalkylator & Tabell (' ~ month_sv ~ ' ' ~ current_year ~ ')',
+        'title': 'BMI Räknare Man & Ålder: Kalkylator & Tabell (2026)',
         'description': 'Räkna ut BMI för män baserat på ålder och muskelmassa. Få en exakt uträkning och jämför med vår BMI-tabell för män. 100% Gratis.',
         'h1': 'BMI Räknare Man: Räkna ut BMI efter ålder',
         'intro': 'Män har ofta mer muskelmassa vilket kan påverka BMI. Vår kalkylator ger dig en korrekt uträkning och tolkning anpassad för män.',
@@ -28,8 +20,8 @@
     },
     'barn': {
         'color': 'emerald',
-        'title': 'BMI Barn – ISO-BMI Kalkylator & Räknare (' ~ month_sv ~ ' ' ~ current_year ~ ')',
-        'description': 'Beräkna BMI för barn och ungdomar med vår ISO-BMI kalkylator. Vi följer BVC:s tillväxtkurvor. Uppdaterad ' ~ month_sv ~ ' ' ~ current_year ~ '.',
+        'title': 'BMI Barn – ISO-BMI Kalkylator & Räknare (2026)',
+        'description': 'Beräkna BMI för barn och ungdomar med vår ISO-BMI kalkylator. Vi följer BVC:s tillväxtkurvor. Uppdaterad juli 2026.',
         'h1': 'BMI Räknare Barn – ISO-BMI Kalkylator',
         'intro': 'För barn används ISO-BMI som tar hänsyn till att barn växer olika beroende på ålder och kön. Detta är standarden som används av barnhälsovården i Sverige.',
         'plural': 'barn'
@@ -52,7 +44,7 @@
 					"name": "{{ data.title }}",
 					"description": "{{ data.description }}",
 					"url": "{{ base_url }}/bmi-{{ segment }}/",
-					"dateModified": "{{ "now"|date("Y-m-d") }}",
+					"dateModified": "2026-07-15",
 					"inLanguage": "sv-SE",
 					"isPartOf": {
 						"@type": "WebSite",
@@ -245,7 +237,7 @@
 								<svg class="h-4 w-4 text-green-500 mr-1" fill="none" viewbox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
 								</svg>
-								Medicinskt granskad
+								Följer WHO &amp; 1177:s riktlinjer
 							</div>
 						</div>
 						{% include 'components/calculator.twig' %}
@@ -635,7 +627,7 @@
 								<svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewbox="0 0 20 20">
 									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
 								</svg>
-								Medicinskt granskad
+								Följer WHO &amp; 1177:s riktlinjer
 							</li>
 							<li class="flex items-center">
 								<svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewbox="0 0 20 20">

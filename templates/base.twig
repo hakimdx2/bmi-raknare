@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="sv">
 	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WWB3EQXHXG"></script>
+		<!-- Google Consent Mode v2: default denied until user consents (GDPR/EEA) -->
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
+			gtag('consent', 'default', {
+				'ad_storage': 'denied',
+				'ad_user_data': 'denied',
+				'ad_personalization': 'denied',
+				'analytics_storage': 'denied',
+				'wait_for_update': 500
+			});
+			if (localStorage.getItem('cookie_consent') === 'accepted') {
+				gtag('consent', 'update', {
+					'ad_storage': 'granted',
+					'ad_user_data': 'granted',
+					'ad_personalization': 'granted',
+					'analytics_storage': 'granted'
+				});
+			}
 			gtag('js', new Date());
 			gtag('config', 'G-WWB3EQXHXG');
 		</script>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WWB3EQXHXG"></script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{% block title %}BMI Räknare – Beräkna BMI Gratis | Kalkylator & Tabell{% endblock %}</title>
@@ -45,22 +61,23 @@
 		<!-- Google AdSense -->
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1826806205536778" crossorigin="anonymous"></script>
 
-		<!-- Hotjar Tracking Code for https://bmi-raknare.se -->
+		<!-- Hotjar: only loaded after cookie consent (see consent banner) -->
 		<script>
-			(function (h, o, t, j, a, r) {
-h.hj = h.hj || function () {
-(h.hj.q = h.hj.q || []).push(arguments)
-};
-h._hjSettings = {
-hjid: 6639630,
-hjsv: 6
-};
-a = o.getElementsByTagName('head')[0];
-r = o.createElement('script');
-r.async = 1;
-r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-a.appendChild(r);
-})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+			function loadHotjar() {
+				if (window._hjSettings) return;
+				(function (h, o, t, j, a, r) {
+					h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+					h._hjSettings = { hjid: 6639630, hjsv: 6 };
+					a = o.getElementsByTagName('head')[0];
+					r = o.createElement('script');
+					r.async = 1;
+					r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+					a.appendChild(r);
+				})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+			}
+			if (localStorage.getItem('cookie_consent') === 'accepted') {
+				loadHotjar();
+			}
 		</script>
 
 		{% block schema %}{% endblock %}
@@ -277,12 +294,54 @@ a.appendChild(r);
 								BMI-Räknare.se. Alla rättigheter förbehållna.
 							</p>
 							<div class="flex space-x-6 mt-4 md:mt-0">
-								<span class="text-gray-500 text-xs">Medicinskt granskad information enligt 1177 & WHO riktlinjer</span>
+								<span class="text-gray-500 text-xs">Faktagranskad information baserad på 1177 & WHO:s riktlinjer</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</footer>
+
+		<!-- Cookie consent banner (GDPR) -->
+		<div id="cookie-banner" class="fixed bottom-0 inset-x-0 z-50 bg-white border-t border-gray-200 shadow-lg" style="display: none;">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+				<p class="text-sm text-gray-600 flex-1">
+					Vi använder cookies för statistik och för att visa annonser via Google AdSense.
+					Du kan välja att endast tillåta nödvändiga cookies.
+					<a href="/integritetspolicy/" class="underline text-brand-600 hover:text-brand-800">Läs mer i vår integritetspolicy</a>.
+				</p>
+				<div class="flex gap-3 flex-shrink-0">
+					<button id="cookie-reject" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+						Endast nödvändiga
+					</button>
+					<button id="cookie-accept" class="px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors">
+						Acceptera alla
+					</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			(function () {
+				var banner = document.getElementById('cookie-banner');
+				if (!localStorage.getItem('cookie_consent')) {
+					banner.style.display = 'block';
+				}
+				document.getElementById('cookie-accept').addEventListener('click', function () {
+					localStorage.setItem('cookie_consent', 'accepted');
+					gtag('consent', 'update', {
+						'ad_storage': 'granted',
+						'ad_user_data': 'granted',
+						'ad_personalization': 'granted',
+						'analytics_storage': 'granted'
+					});
+					loadHotjar();
+					banner.style.display = 'none';
+				});
+				document.getElementById('cookie-reject').addEventListener('click', function () {
+					localStorage.setItem('cookie_consent', 'rejected');
+					banner.style.display = 'none';
+				});
+			})();
+		</script>
 
 		</body>
 	</html>

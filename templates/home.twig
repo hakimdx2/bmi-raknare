@@ -1,13 +1,5 @@
 {% extends "base.twig" %}
 
-{% set current_month = "now"|date("F") %}
-{% set current_year = "now"|date("Y") %}
-{% set swedish_months = {
-    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
-    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
-    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
-} %}
-{% set month_sv = swedish_months[current_month] %}
 
 {% block title %}BMI Räknare — Räkna ut ditt BMI Direkt | Gratis för Kvinnor, Män & Barn{% endblock %}
 {% block description %}Räkna ut ditt BMI direkt på sidan. Gratis BMI-kalkylator för kvinnor, män och barn — anpassad efter ålder och kön. Baserat på WHO:s riktlinjer.{% endblock %}
@@ -44,8 +36,7 @@
 						<span>Baserat på WHO:s riktlinjer</span>
 					</div>
 					<div class="text-sm text-gray-400">
-						Uppdaterad:
-						{{ "now"|date("Y-m-d") }}
+						Uppdaterad: 2026-07-15
 					</div>
 				</div>
 			</div>

@@ -19,7 +19,7 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # Block access to sensitive directories (MUST be before routing)
-RewriteRule ^(src|templates|vendor|cache)(/|$) - [F,L]
+RewriteRule ^(src|templates|templates-17052026|vendor|cache|old|seo|audits|ressources)(/|$) - [F,L]
 
 # Slim Framework Routing
 RewriteCond %{REQUEST_FILENAME} !-f

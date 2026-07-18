@@ -1,16 +1,18 @@
 <div class="mt-8 border-t border-gray-100 pt-6" x-data="{ expanded: false }">
     <div class="flex items-center justify-between mb-4">
         <div class="flex items-center space-x-3">
-            <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xs">
-                DR
+            <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
             </div>
             <div>
-                <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Medicinskt granskad av</p>
-                <p class="text-sm font-medium text-gray-900">Dr. Anna Svensson, Leg. Läkare</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Faktagranskat innehåll</p>
+                <p class="text-sm font-medium text-gray-900">Baserat på riktlinjer från WHO, 1177 och Folkhälsomyndigheten</p>
             </div>
         </div>
         <div class="text-xs text-gray-400">
-            Uppdaterad: {{ "now"|date("Y-m-d") }}
+            Uppdaterad: 2026-07-15
         </div>
     </div>
 
@@ -28,9 +30,9 @@
             </svg>
         </button>
         <div x-show="expanded" class="px-4 py-3 border-t border-gray-200 text-xs text-gray-500 space-y-2">
-            <p>1. WHO (World Health Organization). <a href="#" class="underline text-brand-600">Body mass index - BMI</a>.</p>
-            <p>2. Folkhälsomyndigheten. <a href="#" class="underline text-brand-600">Statistik om övervikt och fetma</a>.</p>
-            <p>3. 1177 Vårdguiden. <a href="#" class="underline text-brand-600">Så mäts övervikt och fetma</a>.</p>
+            <p>1. WHO (World Health Organization). <a href="https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations" target="_blank" rel="noopener" class="underline text-brand-600">A healthy lifestyle – WHO recommendations (BMI)</a>.</p>
+            <p>2. Folkhälsomyndigheten. <a href="https://www.folkhalsomyndigheten.se/livsvillkor-levnadsvanor/mat-fysisk-aktivitet-overvikt-och-fetma/overvikt-och-fetma/" target="_blank" rel="noopener" class="underline text-brand-600">Övervikt och fetma</a>.</p>
+            <p>3. 1177 Vårdguiden. <a href="https://www.1177.se/liv--halsa/traning-och-fysisk-halsa/sa-bedomer-du-din-vikt/" target="_blank" rel="noopener" class="underline text-brand-600">Så bedömer du din vikt</a>.</p>
         </div>
     </div>
 </div>

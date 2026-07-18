@@ -1,15 +1,7 @@
 {% extends "base.twig" %}
 
-{% set current_month = "now"|date("F") %}
-{% set current_year = "now"|date("Y") %}
-{% set swedish_months = {
-    'January': 'Januari', 'February': 'Februari', 'March': 'Mars', 'April': 'April',
-    'May': 'Maj', 'June': 'Juni', 'July': 'Juli', 'August': 'Augusti',
-    'September': 'September', 'October': 'Oktober', 'November': 'November', 'December': 'December'
-} %}
-{% set month_sv = swedish_months[current_month] %}
 
-{% block title %}BMI för Ozempic & Wegovy: Krav & Kriterier ({{ month_sv }} {{ current_year }}){% endblock %}
+{% block title %}BMI för Ozempic & Wegovy: Krav & Kriterier (2026){% endblock %}
 {% block description %}Vilket BMI krävs för att få Ozempic utskrivet? Läs om de exakta medicinska kriterierna för Ozempic, Wegovy och Mounjaro i Sverige. Testa om du uppfyller kraven.{% endblock %}
 {% block canonical %}
 	{{ base_url }}/bmi-ozempic-krav/
