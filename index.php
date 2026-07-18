@@ -37,6 +37,11 @@ if ($isProduction) {
 
 $twig->getEnvironment()->addGlobal('base_url', $baseUrl);
 
+// Feature flag affiliation : encadrés d'affiliation câblés mais MASQUÉS.
+// Passer à true UNIQUEMENT quand les vrais liens Adtraction/partenaires sont en place
+// (composant templates/components/affiliate-box.twig ; cf. docs/monetisation-affiliation-2026-07-18.md).
+$twig->getEnvironment()->addGlobal('affiliate_enabled', false);
+
 // Add Twig Middleware
 $app->add(TwigMiddleware::create($app, $twig));
 

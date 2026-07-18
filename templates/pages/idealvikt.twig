@@ -262,6 +262,16 @@
                         Vår <a href="/">BMI-räknare</a> ger en mer komplett bild genom att även inkludera ålder och midjemått.
                         Du kan också kolla vår <a href="/bmi-tabell/">BMI-tabell</a> för en snabb överblick.
                     </p>
+
+                    {# TODO: remplacer aff_href par le vrai lien Adtraction (Lifesum) une fois le compte actif #}
+                    {% if affiliate_enabled|default(false) %}
+                    {% include 'components/affiliate-box.twig' with {
+                        aff_title: 'Nå din idealvikt med en plan',
+                        aff_text: 'Lifesum hjälper dig att sätta ett realistiskt viktmål och följa dina måltider och kalorier steg för steg.',
+                        aff_cta: 'Prova Lifesum',
+                        aff_href: '#'
+                    } %}
+                    {% endif %}
                 </div>
             </div>
 

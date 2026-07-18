@@ -1,0 +1,22 @@
+{#
+    Composant d'affiliation réutilisable et conforme.
+    - Label "Annonssamarbete" : obligatoire (Marknadsföringslagen — marquage pub).
+    - rel="sponsored nofollow noopener" : exigence Google pour les liens affiliés.
+    - Params : aff_title, aff_text (requis) ; aff_cta, aff_href, aff_disclosure (optionnels).
+    - ⚠️ aff_href = "#" tant que le vrai lien Adtraction/partenaire n'est pas en place (à remplacer).
+    Usage : {% include 'components/affiliate-box.twig' with {aff_title: '...', aff_text: '...', aff_cta: '...', aff_href: '...'} %}
+#}
+<div class="not-prose my-8 rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-teal-50 p-6 shadow-sm">
+    <div class="mb-2 flex items-center justify-between">
+        <span class="text-[11px] font-semibold uppercase tracking-wider text-gray-400">{{ aff_disclosure|default('Annonssamarbete') }}</span>
+    </div>
+    <h3 class="mb-1 text-lg font-bold text-gray-900">{{ aff_title }}</h3>
+    <p class="mb-4 text-sm leading-relaxed text-gray-600">{{ aff_text }}</p>
+    <a href="{{ aff_href|default('#') }}" rel="sponsored nofollow noopener" target="_blank"
+       class="inline-flex items-center rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700">
+        {{ aff_cta|default('Läs mer') }}
+        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+    </a>
+</div>

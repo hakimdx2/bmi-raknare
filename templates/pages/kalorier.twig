@@ -299,9 +299,19 @@
                     </ol>
 
                     <p>
-                        Vill du veta om din vikt är hälsosam? Använd vår <a href="/">BMI-kalkylator</a> eller kolla din 
+                        Vill du veta om din vikt är hälsosam? Använd vår <a href="/">BMI-kalkylator</a> eller kolla din
                         <a href="/idealvikt/">idealvikt</a> för fler riktmärken.
                     </p>
+
+                    {# TODO: remplacer aff_href par le vrai lien Adtraction (HelloFresh/Linas) une fois le compte actif #}
+                    {% if affiliate_enabled|default(false) %}
+                    {% include 'components/affiliate-box.twig' with {
+                        aff_title: 'Håll koll på kalorierna utan tjafs',
+                        aff_text: 'Matkassar som HelloFresh levererar recept med färdiga portioner och näringsvärden — enklare att hålla ditt kaloriintag.',
+                        aff_cta: 'Se matkassar',
+                        aff_href: '#'
+                    } %}
+                    {% endif %}
                 </div>
             </div>
 

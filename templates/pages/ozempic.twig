@@ -280,6 +280,17 @@
 						{# Premium SEO Content Component #}
 						{% include 'components/content-ozempic.twig' %}
 
+						{# Affiliation SERVICE conforme (programme clinique, JAMAIS le médicament — pub de médicament sur ordonnance interdite). #}
+						{# TODO: aff_href = deal partenaire Yazen/Embla ou page comparateur /viktminskning-medicinsk/ #}
+						{% if affiliate_enabled|default(false) %}
+						{% include 'components/affiliate-box.twig' with {
+							aff_title: 'Gå ner i vikt med läkarstöd',
+							aff_text: 'Digitala vårdmottagningar som Yazen erbjuder ett medicinskt viktminskningsprogram med läkare, coach och dietist. Se om du passar för behandling.',
+							aff_cta: 'Jämför program',
+							aff_href: '#'
+						} %}
+						{% endif %}
+
 					</article>
 				</div>
 
